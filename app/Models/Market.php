@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{Market};
+use App\Models\{Plan};
 class Market extends Model
 {
     use HasFactory;
@@ -14,7 +14,7 @@ class Market extends Model
     
     public function Plan()
     {
-        return $this->belongsTo(Market::class , "plan_id" , "id");
+        return $this->belongsTo(Plan::class , "plan_id" , "id");
     }
 
 }

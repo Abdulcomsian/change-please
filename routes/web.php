@@ -42,12 +42,49 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::group(['middleware' => 'auth'] , function(){
 
     Route::get('/signed-up' , [UserController::class , 'get_signed_up'])->name('user.signed_up');
+    // adding market plan
     Route::post('/add-market' , [MarketController::class ,'add_market'])->name('market.add_market');
+    // adding traction plan
+    Route::post('/add-traction' ,[TractionController::class ,'add_traction'])->name('traction.add_traction');
+    // adding team plan
+    Route::post('/add-team' ,[TeamController::class ,'add_team'])->name('team.add_team');
+    // adding Competition plan
+    Route::post('/add-Competition' ,[CompetitionController::class ,'add_competition'])->name('competition.add_competition');
+    // adding Financial plan
+    Route::post('/add-financial' ,[FinancialController::class ,'add_financial'])->name('financial.add_financial');
+    // adding Intellectual Property plan
+    Route::post('/add-intellectual-property' ,[IntellectualPropertyController::class ,'add_intellectual_property'])->name('intellectual_property.add_intellectual_property');
+    // adding Business Model Plan
+    Route::post('/add-business-model' ,[BusinessModelController::class ,'add_business_model'])->name('business_model.add_business_model');
+    // adding Funds Plan
+    Route::post('/add-funds' ,[FundsController::class ,'add_funds'])->name('funds.add_funds');
+    // adding Corporate Structure Plan
+    Route::post('/add-corporate-structure' ,[CorporateStructureController::class ,'add_corporate_structure'])->name('corporate_structure.add_corporate_structure');
+    // adding Corporate Structure Plan
+    Route::post('/add-existing-financial' ,[ExistingFinancialRoundController::class ,'add_existing_financial'])->name('existing_financial.add_existing_financial');
+    // done page
+    Route::get('/done' , [UserController::class , 'get_done'])->name('user.done');
+    //user plan list
+    Route::get('/user-plan',[PlanController::class , 'get_user_plans'])->name('user.plans');
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/investee-questions/{planId}', [UserController::class , 'get_investee_question_form'])->name('user.investee_question_form');
 Route::get('/general-information' , [UserController::class , 'get_general_information'])->name('user.general_information');
-Route::get('/done' , [UserController::class , 'get_done'])->name('user.done');
 Route::get('/services' , [UserController::class ,'get_service'])->name('user.service');
 Route::get('/offerings' , [UserController::class , 'get_offerings'])->name('user.offerings');
 Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');
@@ -110,7 +147,7 @@ Route::group(["prefix" => "analyst"] , function(){
         Route::group(["prefix"=>"investee"], function(){
             Route::get("/business-model" ,[BusinessModelController::class,'get_business_model'])->name('analyst.business_model');
             Route::get("/competition",[CompetitionController::class ,'get_competition'])->name('analyst.competition');
-            Route::get("/corporate-structure",[CorporateStructureController::class ,'get_corporate_structure_controller'])->name('analyst.corporate_structure');
+            Route::get("/corporate-structure",[CorporateStructureController::class ,'get_corporate_structure'])->name('analyst.corporate_structure');
             Route::get("/existing-financial-round",[ExistingFinancialRoundController::class , 'get_existing_financial_round'])->name('analyst.existing_financial_round');
             Route::get("/financial",[FinancialController::class , 'get_financial'])->name('analyst.financial');
             Route::get("/funds",[FundsController::class , 'get_funds'])->name('analyst.funds');

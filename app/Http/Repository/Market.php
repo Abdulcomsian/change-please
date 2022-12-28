@@ -6,8 +6,10 @@ class Market{
     public function add_market_plan($request)
     {
         try{
-            MarketPlan::create([
-                "plan_id" => $request->planId,
+            MarketPlan::updateOrCreate(
+                ["plan_id" => $request->planId ],
+                [
+                 "plan_id" => $request->planId,
                  "market_opportunity" => $request->marketOpportunity,
                  "market_share" => $request->marketShare,
                  "customer" => $request->bestCustomer,
@@ -20,12 +22,11 @@ class Market{
                  "strategy" =>$request->marketStrategy,
                  "status" => "Pending",
             ]);
-            
-            return redirect()->back()->with("market_success" , "Market Plan Added Successfully");
+            return response()->json(["success" => true , "msg" =>"Market Plan Added Successfully" ]);
         }
         catch(Exception $e)
         {
-            return redirect()->back()->with("market_error" , "Something Went Wrong While Adding Market Plan");   
+            return response()->json(["success" => false , "msg" =>"Market Plan Added Successfully" ]);
         }
     }
 }

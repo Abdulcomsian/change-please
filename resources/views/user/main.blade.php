@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
     <link rel="stylesheet" href="{{asset('css/media.css')}}" />
     <link rel="stylesheet" href="{{asset('css/progress-steps.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
@@ -377,6 +378,8 @@
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!-- rating js -->
     <script>

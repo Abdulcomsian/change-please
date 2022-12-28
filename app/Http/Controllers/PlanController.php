@@ -29,4 +29,9 @@ class PlanController extends Controller
         return $this->plan->add_user_plan($request);
 
     }
+
+    public function get_user_plans(Request $request)
+    {   
+        return view('user.plan');
+    }
 }
