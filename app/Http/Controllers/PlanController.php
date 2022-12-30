@@ -34,4 +34,15 @@ class PlanController extends Controller
     {   
         return view('user.plan');
     }
+
+    public function get_user_plan_list(Request $request)
+    {
+        return $this->plan->get_plan_list($request);
+    }
+
+    public function delete_user_plan(Request $request)
+    {
+        return $this->plan->delete_plan($request);
+    }   
+
 }

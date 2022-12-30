@@ -20,9 +20,9 @@ class RouteServiceProvider extends ServiceProvider
     // public const HOME = '/home';
     public const HOME = '/home';
 
-    public const INVESTEE_HOME = '/signed-up';
+    public const INVESTEE_HOME = 'user.signed_up';
 
-    public const INVESTER_HOME = '/home';
+    public const INVESTER_HOME = 'user.home';
     /**
      * The controller namespace for the application.
      *

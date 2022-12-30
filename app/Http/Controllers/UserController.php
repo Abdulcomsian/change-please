@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Plan;
 
 class UserController extends Controller
 {
@@ -12,7 +13,11 @@ class UserController extends Controller
     }
     public function get_investee_question_form(Request $request)
     {
-        return view('user.questions.investee_questions')->with(['planId' => $request->planId ]);
+        $plan = Plan::with('Market', 'Team', 'Traction', 'Competition', 'BusinessModel', 'CorporateStructure', 'ExistingFinancial', 'Financial', 'Fund', 'IntellectualProperty')
+                    ->where('id' , $request->planId)
+                    ->first();
+
+        return view('user.questions.investee_questions')->with(['planId' => $request->planId , 'plan' => $plan ]);
     }
     public function get_general_information()
     {

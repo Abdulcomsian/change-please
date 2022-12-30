@@ -67,5 +67,7 @@ class Kernel extends HttpKernel
         'admin.guest'=> \App\Http\Middleware\RedirectAdminIfAuthenticated::class,
         'analyst.authenticate' => \App\Http\Middleware\AuthenticateAnalyst::class,
         'analyst.guest'=> \App\Http\Middleware\RedirectAnalystIfAuthenticated::class,
+        'auth.investee' =>\App\Http\Middleware\AuthenticateInvestee::class,
+        'auth.invester' =>\App\Http\Middleware\AuthenticateInvester::class,
     ];
 }

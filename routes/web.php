@@ -36,10 +36,11 @@ use App\Http\Controllers\{
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/' , [UserController::class ,'get_home'])->name('main.home');
+Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');
 
 // user route starts here
-Route::group(['middleware' => 'auth'] , function(){
+Route::group(['middleware' => ['auth' ,'auth.investee']] , function(){
 
     Route::get('/signed-up' , [UserController::class , 'get_signed_up'])->name('user.signed_up');
     // adding market plan
@@ -64,8 +65,12 @@ Route::group(['middleware' => 'auth'] , function(){
     Route::post('/add-existing-financial' ,[ExistingFinancialRoundController::class ,'add_existing_financial'])->name('existing_financial.add_existing_financial');
     // done page
     Route::get('/done' , [UserController::class , 'get_done'])->name('user.done');
-    //user plan list
+    //user plan list page
     Route::get('/user-plan',[PlanController::class , 'get_user_plans'])->name('user.plans');
+    //user plan list
+    Route::get('/user-plan-list' , [PlanController::class , 'get_user_plan_list'])->name('user.plan_list');
+    //delete user plan
+    Route::get('/delete-plan/{id}' , [PlanController::class , 'delete_user_plan'])->name('delete-plan');
 
 
 
@@ -87,7 +92,6 @@ Route::get('/investee-questions/{planId}', [UserController::class , 'get_investe
 Route::get('/general-information' , [UserController::class , 'get_general_information'])->name('user.general_information');
 Route::get('/services' , [UserController::class ,'get_service'])->name('user.service');
 Route::get('/offerings' , [UserController::class , 'get_offerings'])->name('user.offerings');
-Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');
 Route::get('/filter' , [UserController::class ,'get_filter'])->name('user.filter');
 Route::get('/invester-information' ,[UserController::class, 'get_invester'])->name('user.invester');
 Route::get('/plan' ,[UserController::class , 'get_plan_statistics'])->name('user.plan');

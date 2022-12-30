@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{asset('css/media.css')}}" />
     <link rel="stylesheet" href="{{asset('css/progress-steps.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
@@ -85,6 +86,11 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>
             </li>
+      
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('user.plans')}}">Plan</a>
+            </li>
+            @if(auth()->user())
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -102,6 +108,12 @@
                 <li><a class="dropdown-item" href="{{route('user.logout')}}">Sign Out</a></li>
               </ul>
             </li>
+            @else
+            <div class="btns"> 
+              <a href="{{route('login')}}" class="btn btn-blue-outline">Login</a>
+          </div>
+            @endif
+            
           </ul>
           {{-- <div class="btns">
             <a href="#" class="btn btn-blue">Login</a>
@@ -380,6 +392,8 @@
     ></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
     <!-- rating js -->
     <script>
@@ -398,5 +412,6 @@
         $(".dot.green").addClass("active");
       }
     </script>
+    @yield('script')
   </body>
 </html>

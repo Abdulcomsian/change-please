@@ -84,7 +84,7 @@
             </li>
             <div class="btns">
                 {{-- <a href="#" class="btn btn-blue">Login</a> --}}
-                <a href="javascript:void(0)" class="btn btn-blue-outline" data-bs-toggle="modal" data-bs-target="#opt1">Login</a>
+                <a href="javascript:void(0)" class="btn bg-primary text-light btn-blue-outline" data-bs-toggle="modal" data-bs-target="#opt1">Login</a>
             </div>
             {{-- <li class="nav-item">
               <a class="nav-link" href="#">
@@ -140,7 +140,7 @@
     <div class="service_section_2">
       <div class="container">
         <div class="text_content text-center">
-          <h2 class="section_title">Start turning your ideas into reality 2</h2>
+          <h2 class="section_title">Start turning your ideas into reality</h2>
           <p class="section_para">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. A convallis
             ultrices malesuada quis lorem turpis.
