@@ -23,6 +23,8 @@
       referrerpolicy="no-referrer"
     />
 
+    
+
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
@@ -136,6 +138,7 @@
       </div>
     </nav>
 
+
     <!-- section 2 -->
     <div class="service_section_2">
       <div class="container">
@@ -184,6 +187,13 @@
               aria-label="Close"
             ></button>
           </div>
+          @if($errors->any())
+          <div class="text-center text-danger my-1">
+            @foreach($errors->all() as $error)
+              {{$error}}
+            @endforeach
+          </div>
+          @endif
           <div class="modal-body">
             <form method="POST" action="{{ route('login') }}">
               @csrf
@@ -375,6 +385,10 @@
 
     <!-- bootstrap 5 js -->
     <script
+    src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+    crossorigin="anonymous"></script>
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
@@ -394,6 +408,13 @@
             {
                 document.getElementById("role").value = role;
             }
+
+            @if($errors->any())
+              $("#opt1").modal("toggle")
+            @enderror
+
+
+
         }
     </script>
 
