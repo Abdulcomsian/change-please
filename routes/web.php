@@ -40,7 +40,7 @@ Route::get('/' , [UserController::class ,'get_home'])->name('main.home');
 Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');
 
 // user route starts here
-Route::group(['middleware' => ['auth' ,'auth.investee']] , function(){
+Route::group(['middleware' => ['auth' ,'auth.investee', 'preventBackHistory']] , function(){
 
     Route::get('/signed-up' , [UserController::class , 'get_signed_up'])->name('user.signed_up');
     // adding market plan

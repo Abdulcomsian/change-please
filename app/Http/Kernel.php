@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'analyst.guest'=> \App\Http\Middleware\RedirectAnalystIfAuthenticated::class,
         'auth.investee' =>\App\Http\Middleware\AuthenticateInvestee::class,
         'auth.invester' =>\App\Http\Middleware\AuthenticateInvester::class,
+        'preventBackHistory' => \App\Http\Middleware\PreventBackHistory::class,
     ];
 }
