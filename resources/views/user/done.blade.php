@@ -8,7 +8,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. A convallis
         ultrices malesuada quis lorem turpis.
       </p>
-      <a href="#" class="btn btn-blue d-block py-3">ok</a>
+      <a href="{{route('user.plans')}}" class="btn btn-blue d-block py-3">ok</a>
     </div>
   </div>
 @endsection
