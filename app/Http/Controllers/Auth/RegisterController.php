@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -71,5 +71,18 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
+    }
+
+
+    public function redirectTo()
+    {
+        if(auth()->user()->role == \AppConst::INVESTEE_ROLE)
+        {
+            return RouteServiceProvider::INVESTEE_HOME;
+        }
+        elseif(auth()->user()->role == \AppConst::INVESTER_ROLE)
+        {
+            return RouteServiceProvider::INVESTER_HOME;
+        }
     }
 }
