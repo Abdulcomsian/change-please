@@ -320,9 +320,9 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container">
 								<!--begin::Row-->
-								<div class="row gy-5 g-xl-8">
+								<div class="row gy-5 g-xl-12">
 									<!--begin::Col-->
-									<div class="col-xxl-4">
+									<div class="col-xxl-12">
 										<!--begin::Mixed Widget 2-->
 											{{-- MAIN CONTENT COMES HERE --}}
                                             @yield('main-content')
@@ -352,7 +352,7 @@ License: For each use you must have a valid license purchased only from above li
 			<!--end::Page-->
 		</div>
 		<!--end::Root-->
-
+		@yield('script')
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="{{asset('assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>

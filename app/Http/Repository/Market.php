@@ -6,7 +6,7 @@ class Market{
     public function add_market_plan($request)
     {
         try{
-            MarketPlan::updateOrCreate(
+           $market =  MarketPlan::updateOrCreate(
                 ["plan_id" => $request->planId ],
                 [
                  "plan_id" => $request->planId,

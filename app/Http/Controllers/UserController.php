@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plan;
+use App\Http\Repository\Home;
 
 class UserController extends Controller
 {
+    public $home;
+
+    public function __construct(Home $home)
+    {
+        $this->home = $home;
+    }
     public function get_signed_up()
     {
         return view('user.sign_complete');
@@ -37,7 +44,8 @@ class UserController extends Controller
     }
     public function get_home()
     {
-        return view('user.home');
+        $plans = $this->home->get_home_details(0);
+        return view('user.home')->with(['plans' => $plans]);
     }
     public function get_filter()
     {

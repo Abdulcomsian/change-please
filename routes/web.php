@@ -37,7 +37,10 @@ use App\Http\Controllers\{
 Auth::routes();
 
 Route::get('/' , [UserController::class ,'get_home'])->name('main.home');
+
 Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');
+// load plan
+Route::post('/load-more-plan' , [PlanController::class , 'load_more_plan'])->name('load.more.plan');
 
 // user route starts here
 Route::group(['middleware' => ['auth' ,'auth.investee', 'preventBackHistory']] , function(){
@@ -65,14 +68,12 @@ Route::group(['middleware' => ['auth' ,'auth.investee', 'preventBackHistory']] ,
     Route::post('/add-existing-financial' ,[ExistingFinancialRoundController::class ,'add_existing_financial'])->name('existing_financial.add_existing_financial');
     // done page
     Route::get('/done' , [UserController::class , 'get_done'])->name('user.done');
-    //user plan list page
+    // user plan list page
     Route::get('/user-plan',[PlanController::class , 'get_user_plans'])->name('user.plans');
-    //user plan list
+    // user plan list
     Route::get('/user-plan-list' , [PlanController::class , 'get_user_plan_list'])->name('user.plan_list');
-    //delete user plan
+    // delete user plan
     Route::get('/delete-plan/{id}' , [PlanController::class , 'delete_user_plan'])->name('delete-plan');
-
-
 
 });
 
@@ -130,6 +131,9 @@ Route::group( ["prefix" => "admin"] , function(){
         Route::get('/' , [DashboardController::class , 'get_admin_dashboard'])->name('admin');
         Route::get('/home', [DashboardController::class , 'get_admin_dashboard'])->name('admin.dashboard');
         Route::get('/analyst-list' , [AnalystController::class , 'get_analyst'])->name('admin.analyst');
+        Route::post('/add-analyst' , [AnalystController::class , 'add_analyst'])->name('admin.add.analyst');
+        Route::post('/edit-analyst' , [AnalystController::class , 'edit_analyst'])->name('admin.edit.analyst');
+        Route::post('/delete-analyst' , [AnalystController::class , 'delete_analyst'])->name('admin.delete.analyst');
         Route::get('/logout' , [AdminController::class , 'logout'])->name('admin.logout');
         
         // Route::get('/home' , [AdminController::class , 'home'])->name('admin.dashboard');

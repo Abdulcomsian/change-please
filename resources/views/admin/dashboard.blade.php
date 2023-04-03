@@ -4,9 +4,9 @@
 @endsection
 
 @section('main-content')
-<div class="row gy-5 g-xl-8">
+<div class="row gy-5 g-xl-12">
     <!--begin::Col-->
-    <div class="col-xxl-4">
+    <div class="col-xxl-12">
         <!--begin::Mixed Widget 2-->
         <div class="card card-xxl-stretch">
             <!--begin::Header-->

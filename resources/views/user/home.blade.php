@@ -19,191 +19,51 @@
           purus sit amet luctus
         </p>
       </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="box mt-5">
-            <div class="card">
-              <img src="{{asset('img/cardImg.png')}}" class="card-img-top" alt="card image">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col-lg-8">
-                    <div class="card_title">
-                      <h2>Good Loop</h2>
-                      <p class="mb-0">Brooklyn, NY</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-flex justify-content-end">
-                    <img src="{{asset('img/rating.png')}}" alt="rating">
-                  </div>
-                </div>
-                <p class="card_des">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                  aliquam, purus sit
-                </p>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="progressNote">
-                  <span class="blueText">$574,920</span> raised of $1,000,000
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box mt-5">
-            <div class="card">
-              <img src="{{asset('img/cardImg.png')}}" class="card-img-top" alt="card image">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col-lg-8">
-                    <div class="card_title">
-                      <h2>Good Loop</h2>
-                      <p class="mb-0">Brooklyn, NY</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-flex justify-content-end">
-                    <img src="{{asset('img/rating.png')}}" alt="rating">
-                  </div>
-                </div>
-                <p class="card_des">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                  aliquam, purus sit
-                </p>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="progressNote">
-                  <span class="blueText">$574,920</span> raised of $1,000,000
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box mt-5">
-            <div class="card">
-              <img src="{{asset('img/cardImg2.png')}}" class="card-img-top" alt="card image">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col-lg-8">
-                    <div class="card_title">
-                      <h2>Good Loop</h2>
-                      <p class="mb-0">Brooklyn, NY</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-flex justify-content-end">
-                    <img src="{{asset('img/rating.png')}}" alt="rating">
-                  </div>
-                </div>
-                <p class="card_des">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                  aliquam, purus sit
-                </p>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="progressNote">
-                  <span class="blueText">$574,920</span> raised of $1,000,000
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box mt-5">
-            <div class="card">
-              <img src="{{asset('img/cardImg1.png')}}" class="card-img-top" alt="card image">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col-lg-8">
-                    <div class="card_title">
-                      <h2>Good Loop</h2>
-                      <p class="mb-0">Brooklyn, NY</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-flex justify-content-end">
-                    <img src="{{asset('img/rating.png')}}" alt="rating">
-                  </div>
-                </div>
-                <p class="card_des">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                  aliquam, purus sit
-                </p>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="progressNote">
-                  <span class="blueText">$574,920</span> raised of $1,000,000
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box mt-5">
-            <div class="card">
-              <img src="{{asset('img/cardImg2.png')}}" class="card-img-top" alt="card image">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col-lg-8">
-                    <div class="card_title">
-                      <h2>Good Loop</h2>
-                      <p class="mb-0">Brooklyn, NY</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-flex justify-content-end">
-                    <img src="{{asset('img/rating.png')}}" alt="rating">
-                  </div>
-                </div>
-                <p class="card_des">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                  aliquam, purus sit
-                </p>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="progressNote">
-                  <span class="blueText">$574,920</span> raised of $1,000,000
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box mt-5">
-            <div class="card">
-              <img src="{{asset('img/cardImg3.png')}}" class="card-img-top" alt="card image">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col-lg-8">
-                    <div class="card_title">
-                      <h2>Good Loop</h2>
-                      <p class="mb-0">Brooklyn, NY</p>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-flex justify-content-end">
-                    <img src="{{asset('img/rating.png')}}" alt="rating">
-                  </div>
-                </div>
-                <p class="card_des">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                  aliquam, purus sit
-                </p>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="progressNote">
-                  <span class="blueText">$574,920</span> raised of $1,000,000
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div class="row project-row">
+        @include('components.planList')
       </div>
+
+
       <div class="btns d-flex justify-content-center">
-        <a href="#" class="btn btn-blue-outline">View All Projects</a>
+        <a href="javascript:void(0)" class="btn btn-blue-outline load-more-plan-btn">View All Projects</a>
       </div>
     </div>
   </div>
+@endsection
+@section('script')
+<script>
+window.onload = function(){
+
+ let loadMoreBtn = document.querySelector(".load-more-plan-btn");
+ loadMoreBtn.addEventListener("click" , function(e){
+    let totalPlan = document.querySelectorAll(".plan").length;
+    $.ajax({
+      type : "POST",
+      url : "{{route('load.more.plan')}}",
+      data : {
+        _token : "{{csrf_token()}}",
+        totalPlan : totalPlan
+      },
+      success:function(res){
+        if(res.success == true){
+          let testProject = ["" , undefined , null];
+          let project = res.projects;
+          if(testProject.includes(project))
+          {
+            toastr.error("No More Project Available");
+            document.querySelector(".load-more-plan-btn").remove();
+          }else{
+            document.querySelector(".project-row").insertAdjacentHTML('beforeend' , project);
+          }
+          window.scrollTo(0, document.body.scrollHeight);
+        }else{
+          alert(res.error);
+        }
+      }
+    })
+ })
+
+}
+</script>
 @endsection

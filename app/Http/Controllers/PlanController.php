@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Repository\Plan;
+use App\Http\Repository\Home;
 
 class PlanController extends Controller
 {
     protected $plan;
+    protected $home;
 
-    public function __construct(Plan $plan)
+    public function __construct(Plan $plan , Home $home)
     {
         $this->plan = $plan;
+        $this->home = $home;
     }
 
     protected $rule = [
@@ -43,6 +46,19 @@ class PlanController extends Controller
     public function delete_user_plan(Request $request)
     {
         return $this->plan->delete_plan($request);
-    }   
+    }
+    
+    public function load_more_plan(Request $request)
+    {
+        try{
+        
+        $totalPlan = $request->totalPlan;
+        $plan = $this->home->get_home_details($totalPlan);
+        return response()->json(['projects' => view('components.planList',['plans' => $plan])->render() , 'success' => true ]);    
+        
+        }catch(Exception $e) {
+            return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'error' => $e->getMessage()]);
+        }
+    }
 
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Analyst;
+use Illuminate\Support\Facades\Hash;
 use Auth;
+use Validator;
 
 class AnalystController extends Controller
 {
@@ -36,7 +39,52 @@ class AnalystController extends Controller
 
     public function get_analyst()
     {
-        return view('admin.analyst');
+        $analyst = Analyst::paginate(15);
+        return view('admin.analyst')->with(['analysts' => $analyst]);
+    }
+
+    public function add_analyst(Request $request)
+    {
+        try{
+
+        $validator = Validator::make( $request->all() ,[
+            'firstname' => 'required|min:3',
+            'lastname' => 'required|min:3',
+            'email' => 'required|min:3|unique:analyst',
+            'password' => 'required|min:3',
+            'status' => 'required'
+        ]);
+        
+            if($validator->fails()){
+                return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'errors' => $validator->getMessageBag()]);
+            }
+            else
+            {
+                $firstName = $request->firstname;
+                $lastName  = $request->lastname;
+                $email     = $request->email;
+                $password  = Hash::make($request->password);
+                $status    = $request->status;
+                //inserting analyst
+                Analyst::insert([
+                    'email' => $email,
+                    'firstname' => $firstName,
+                    'lastname'  => $lastName,
+                    'password'  => $password,
+                    'status'    => $status
+                ]);
+            
+                return response()->json(['success' => true , 'msg' => 'Analyst added successfully']);
+            }
+        }
+        catch(Exception $e){
+
+            return response()->json(['success' => false , 'msg' => 'Something went wrong' , 'error' => $e->getMessage()]);
+        
+        }
+
+
+        
     }
 
 }
