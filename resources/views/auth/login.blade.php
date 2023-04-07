@@ -187,14 +187,14 @@
               aria-label="Close"
             ></button>
           </div>
-          @if($errors->any())
-          <div class="text-center text-danger my-1">
-            @foreach($errors->all() as $error)
-              {{$error}}
-            @endforeach
-          </div>
-          @endif
           <div class="modal-body">
+            @if($errors->any())
+              @if($errors->has('login_error'))
+                @foreach($errors->all() as $error)
+                  <div class="text-center"><strong class="text-danger">{{$error}}</strong></div>
+                @endforeach
+              @endif
+            @endif
             <form method="POST" action="{{ route('login') }}">
               @csrf
               <div class="mb-3">
@@ -272,6 +272,13 @@
             ></button>
           </div>
           <div class="modal-body">
+            @if($errors->any())
+              @if(!$errors->has('login_error'))
+                @foreach($errors->all() as $error)
+                  <div class="text-center"><strong class="text-danger">{{$error}}</strong></div>
+                @endforeach
+              @endif
+            @endif
             <form method="POST" action="{{ route('register') }}">
                 @csrf
             <input type="hidden" name="role" id="role">
@@ -413,13 +420,17 @@
             }
 
             @if($errors->any())
-              $("#opt1").modal("toggle")
-            @enderror
-
+              @if($errors->has('login_error'))
+                $("#opt1").modal("toggle")  
+              @else
+                $("#opt2").modal("toggle")  
+              @endif
+            @endif
 
 
         }
     </script>
+
 
   </body>
 </html>
