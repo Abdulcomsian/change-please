@@ -36,6 +36,8 @@ use App\Http\Controllers\{
 
 Auth::routes();
 
+Route::view('invester/login' , 'invester.invester-login')->name('invester.login');
+
 Route::get('/' , [UserController::class ,'get_home'])->name('main.home');
 
 Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');

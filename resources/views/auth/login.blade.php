@@ -149,19 +149,19 @@
             ultrices malesuada quis lorem turpis.
           </p>
         </div>
-        <div class="row">
+        <div class="row d-flex justify-content-center">
           <div class="col-lg-6" id="investee">
             <div class="register_option" data-bs-toggle="modal" id="investee">
               <h3>Become an Investee</h3>
               <img src="img/opt1.png" alt="opt" />
             </div>
           </div>
-          <div class="col-lg-6" data-bs-toggle="modal" id="invester">
+          {{-- <div class="col-lg-6" data-bs-toggle="modal" id="invester">
             <div class="register_option">
               <h3>Become an Investor</h3>
               <img src="img/opt2.png" alt="opt" />
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

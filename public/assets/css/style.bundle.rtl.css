@@ -39582,6 +39582,7 @@ code:not([class*=language-]) {
   border-color: #F5F8FA;
   color: #5E6278;
   transition: color 0.2s ease, background-color 0.2s ease;
+  background: #eafefe;
 }
 .form-control.form-control-solid::placeholder {
   color: #A1A5B7;
