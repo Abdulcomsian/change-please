@@ -79,18 +79,68 @@
             <div class="mb-3">
               <label for="logo" class="form-label form_box_label">Upload Logo</label>
               <input type="file" name="logo" class="form-control form_box_input" id="logo">
+              @error('logo')
+              <span class="text-danger h6">
+                  {{$message}}
+              </span>
+              @enderror
             </div>
           </div>
           <div class="col-lg-6">
             <div class="mb-3">
               <label for="category" class="form-label form_box_label">Category</label>
-              <input type="text" name="category" class="form-control form_box_input" id="category">
+              <select name="category" class="form-control" id="category">
+                <option value="Energy">Energy</option>
+                <option value="Materials">Materials</option>
+                <option value="Industrials">Industrials</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Saham">Saham</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Communication Services">Communication Services</option>
+                <option value="Others">Others</option>
+              </select>
+              {{-- <input type="text" name="category" class="form-control form_box_input" id="category"> --}}
             </div>
           </div>
           <div class="col-lg-12">
             <div class="mb-3">
               <label for="video" class="form-label form_box_label">Upload Video</label>
               <input type="url" name="video" class="form-control form_box_input" id="exampleFormControlInput1">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="investment" class="form-label form_box_label">Required Investment</label>
+              <input type="number" name="investment" class="form-control form_box_input" id="investment">
+              @error('investment')
+              <span class="text-danger h6">
+                  {{$message}}
+              </span>
+              @enderror
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="amount" class="form-label form_box_label">Raised Amount</label>
+              <input type="number" name="amount" class="form-control form_box_input" id="amount">
+              @error('amount')
+              <span class="text-danger h6">
+                  {{$message}}
+              </span>
+              @enderror
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label for="description" class="form-label form_box_label">Short Description</label>
+              <textarea class="form-control" name="description" id="description" cols="30" rows="3" id="description"></textarea>
+              @error('description')
+              <span class="text-danger h6">
+                  {{$message}}
+              </span>
+              @enderror
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ class Plan extends Model
     use HasFactory;
     protected $table = "plans";
     protected $primaryKey = "id";
-    protected $fillable = [ "user_id", "company_name", "size", "country", "city", "category","address","postal_code","company_logo","video", "status" ];
+    protected $fillable = [ "user_id", "company_name", "size","investment","amount","country", "city", "category","address","postal_code","company_logo","video", "status" ,"description" ];
 
     public function Investee()
     {

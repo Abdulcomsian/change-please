@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    @yield('title')
+   
+   @livewireStyles
 
+   @livewireScripts
     <!-- bootstrap 5 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -30,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('css/progress-steps.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
+    @yield('style')
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
@@ -86,9 +90,13 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>
             </li>
-      
+            @if(auth()->user() && auth()->user()->role == 1)
             <li class="nav-item">
               <a class="nav-link" href="{{route('user.plans')}}">Plan</a>
+            </li>
+            @endif
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('user.filter')}}">Projects</a>
             </li>
             @if(auth()->user())
             <li class="nav-item dropdown">
@@ -412,6 +420,7 @@
         $(".dot.green").addClass("active");
       }
     </script>
+    
     @yield('script')
   </body>
 </html>

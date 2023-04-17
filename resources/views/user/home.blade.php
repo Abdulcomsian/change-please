@@ -25,45 +25,52 @@
       </div>
 
 
-      <div class="btns d-flex justify-content-center">
-        <a href="javascript:void(0)" class="btn btn-blue-outline load-more-plan-btn">View All Projects</a>
-      </div>
+      @if($plans->count() > 0)
+        <div class="btns d-flex justify-content-center">
+          {{-- <a href="javascript:void(0)" class="btn btn-blue-outline load-more-plan-btn">View All Projects</a> --}}
+          <a href="{{route('user.filter')}}" class="btn btn-blue-outline load-more-plan-btn">View All Projects</a>
+        </div>
+      @else
+      <blockquote class="blockquote text-center">
+        <p class="mb-0 my-2 text-muted"><strong>No  Project  Found!</strong></p>
+      </blockquote>
+      @endif
     </div>
   </div>
 @endsection
 @section('script')
 <script>
-window.onload = function(){
+// window.onload = function(){
 
- let loadMoreBtn = document.querySelector(".load-more-plan-btn");
- loadMoreBtn.addEventListener("click" , function(e){
-    let totalPlan = document.querySelectorAll(".plan").length;
-    $.ajax({
-      type : "POST",
-      url : "{{route('load.more.plan')}}",
-      data : {
-        _token : "{{csrf_token()}}",
-        totalPlan : totalPlan
-      },
-      success:function(res){
-        if(res.success == true){
-          let testProject = ["" , undefined , null];
-          let project = res.projects;
-          if(testProject.includes(project))
-          {
-            toastr.error("No More Project Available");
-            document.querySelector(".load-more-plan-btn").remove();
-          }else{
-            document.querySelector(".project-row").insertAdjacentHTML('beforeend' , project);
-          }
-          window.scrollTo(0, document.body.scrollHeight);
-        }else{
-          alert(res.error);
-        }
-      }
-    })
- })
+//  let loadMoreBtn = document.querySelector(".load-more-plan-btn");
+//  loadMoreBtn.addEventListener("click" , function(e){
+//     let totalPlan = document.querySelectorAll(".plan").length;
+//     $.ajax({
+//       type : "POST",
+//       url : "{{route('load.more.plan')}}",
+//       data : {
+//         _token : "{{csrf_token()}}",
+//         totalPlan : totalPlan
+//       },
+//       success:function(res){
+//         if(res.success == true){
+//           let testProject = ["" , undefined , null];
+//           let project = res.projects;
+//           if(testProject.includes(project))
+//           {
+//             toastr.error("No More Project Available");
+//             document.querySelector(".load-more-plan-btn").remove();
+//           }else{
+//             document.querySelector(".project-row").insertAdjacentHTML('beforeend' , project);
+//           }
+//           window.scrollTo(0, document.body.scrollHeight);
+//         }else{
+//           alert(res.error);
+//         }
+//       }
+//     })
+//  })
 
-}
+// }
 </script>
 @endsection

@@ -7,7 +7,7 @@ class Home{
     
     public function get_home_details($totalPlan){
         $user = auth()->user();
-        $planList = Plan::orderBy('id','desc')->offset($totalPlan)->limit(1)->get();
+        $planList = Plan::orderBy('id','desc')->offset($totalPlan)->limit(6)->get();
         return $planList;
     }
 

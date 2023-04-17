@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Repository\Plan;
 use App\Http\Repository\Home;
+use Illuminate\Validation\Rule;
 
 class PlanController extends Controller
 {
@@ -17,16 +18,20 @@ class PlanController extends Controller
         $this->home = $home;
     }
 
-    protected $rule = [
-                    "company_name" => "required",
-                    "size" => "required",
-                    "country" => "required",
-                    "city" =>"required",
-                    "logo" =>"required|file|mimes:jpg,png,jpeg,jfif,gif,hevc,heif,JPG,PNG,JPEG,jfif,GIF,HEVC,HEIF"
-                ];
+     protected $rule = [
+                "company_name" => "required",
+                "size" => "required",
+                "country" => "required",
+                "city" => "required",
+                "logo" => "required|file|mimes:jpg,png,jpeg,jfif,gif,hevc,heif,JPG,PNG,JPEG,jfif,GIF,HEVC,HEIF",
+                "investment" => "required",
+                "amount" => 'required|numeric|lt:investment',
+                "description" => "required"
+            ];
 
     public function add_plan(Request $request)
     {   
+
         $request->validate($this->rule);
 
         return $this->plan->add_user_plan($request);

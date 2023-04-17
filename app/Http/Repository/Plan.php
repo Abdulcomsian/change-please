@@ -32,6 +32,8 @@ class Plan{
                 "user_id" => auth()->user()->id,
                 "company_name" => $request->company_name,
                 "size" =>   $request->size,
+                "investment" => $request->investment,
+                "amount"     => $request->amount,
                 "country"   => $request->country,
                 "city"  => $request->city,
                 "address" => $request->address,
@@ -39,7 +41,8 @@ class Plan{
                 "company_logo" => $newName,
                 "category"  => $request->category,
                 "status"    => "pending",
-                "video" => $request->video
+                "description" => $request->description,
+                "video" => $request->video,
             ]);
 
            return redirect('/investee-questions/'.$planId);
