@@ -154,6 +154,7 @@ Route::group(["prefix" => "analyst"] , function(){
         Route::get("/" , [DashboardController::class , 'get_analyst_dashboard' ])->name('analyst');
         Route::get("/home" , [DashboardController::class , 'get_analyst_dashboard' ])->name('analyst.dashboard');
         Route::get("/investee-list",[InvesteeController::class , 'get_investee'])->name('analyst.investee');
+        Route::get("/get-investee-list" ,[InvesteeController::class , 'get_investee_list'])->name('analyst.investee.list');
         Route::group(["prefix"=>"investee"], function(){
             Route::get("/business-model" ,[BusinessModelController::class,'get_business_model'])->name('analyst.business_model');
             Route::get("/competition",[CompetitionController::class ,'get_competition'])->name('analyst.competition');

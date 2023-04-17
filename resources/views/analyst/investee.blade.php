@@ -61,7 +61,7 @@
         Refused
       </button>
     </li>
-    <li class="nav-item" role="presentation">
+    {{-- <li class="nav-item" role="presentation">
       <button
         class="nav-link"
         id="report-tab"
@@ -74,7 +74,7 @@
       >
         Complete Report
       </button>
-    </li>
+    </li> --}}
   </ul>
   <div class="tab-content" id="myTabContent">
     <div
@@ -83,20 +83,18 @@
       role="tabpanel"
       aria-labelledby="home-tab"
     >
-      <div class="table-responsive dash_table">
-        <table class="table caption-top">
+      <div class="table-responsive dash_table my-2">
+        <table class="table caption-top" id="investee-list">
           <thead>
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Company Name</th>
               <th scope="col">Status</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {{-- <tr>
               <td>
                 John Doe
                 <span class="badge rounded-pill bg-primary">New</span>
@@ -149,7 +147,7 @@
               <td>@mdo</td>
               <td>Otto</td>
               <td>@mdo</td>
-            </tr>
+            </tr> --}}
           </tbody>
         </table>
       </div>
@@ -179,4 +177,24 @@
       Complete Report
     </div>
   </div>
+@endsection
+@section('script')
+<script>
+   window.onload = function(){
+    (function(){
+      $("#investee-list").DataTable({
+                processing: true,
+                serverSide: true,
+                pagingType: 'full_numbers',
+                ajax: '{{ route('analyst.investee.list') }}',
+                columns: [
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'status', name: 'status' },
+                    { data: 'action', name: 'action' },
+                ]
+            });
+      })();
+  }
+</script>
 @endsection
