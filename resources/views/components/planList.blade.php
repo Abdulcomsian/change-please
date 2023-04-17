@@ -18,11 +18,14 @@
             <p class="card_des">
               ${{$plan->description}}
             </p>
+            @php
+            $totalWidth = ceil( ($plan->amount/$plan->investment) * 100)
+            @endphp
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar" role="progressbar" style="width: {{$totalWidth}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <p class="progressNote">
-              <span class="blueText">${{$plan->amount}}</span> raised of ${{$plan->investment}}
+              <span class="blueText">${{number_format($plan->amount)}}</span> raised of ${{number_format($plan->investment)}}
             </p>
           </div>
         </div>
