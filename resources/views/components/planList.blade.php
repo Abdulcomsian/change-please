@@ -16,14 +16,13 @@
               </div>
             </div>
             <p class="card_des">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit
+              ${{$plan->description}}
             </p>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <p class="progressNote">
-              <span class="blueText">$574,920</span> raised of $1,000,000
+              <span class="blueText">${{$plan->amount}}</span> raised of ${{$plan->investment}}
             </p>
           </div>
         </div>
