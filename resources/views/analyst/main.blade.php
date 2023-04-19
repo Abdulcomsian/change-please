@@ -34,6 +34,18 @@
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
     <link rel="stylesheet" href="{{asset('css/media.css')}}" />
+    <style>
+      .investee-status{
+        text-transform: capitalize;
+      }
+      .view-investee-plan{
+        color: #608AEE;
+      }
+      .investee-plan{
+        text-decoration: none;
+      }
+  
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg">
@@ -136,7 +148,7 @@
           </div>
           
 
-          <div class="col-lg-9">
+          <div class="col-lg-9 px-3">
              {{-- Main content starts here --}}
              @yield('main-content')
              {{-- Main content ends here --}}

@@ -21,8 +21,8 @@ class AnalystController extends Controller
         {
             return redirect()->route('analyst.dashboard');
         }else{
-            session()->flash('error','Either Email/Password Incorrect');
-            return back()->withInput($request->only('email'));
+            session()->flash('attemptError','Either Email/Password Incorrect');
+            return back()->withInput($request->only('email'))->with('attemptError' , 'Either Email/Password Incorrect');
         }
     }
 

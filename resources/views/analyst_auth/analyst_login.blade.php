@@ -70,29 +70,34 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Title-->
 								<h1 class="text-dark mb-3">Log In</h1>
 								<!--end::Title-->
+								@if(Session::has('attemptError'))
+									<span class="text-danger text-center">
+										<strong>{{ Session::get('attemptError') }}</strong>
+									</span>
+								@endif
 							</div>
 							<!--begin::Heading-->
 							<!--begin::Input group-->
 							<div class="fv-row mb-10">
 								<label class="form-label fw-bolder text-dark fs-6">Email</label>
-								<input class="form-control form-control-solid" type="email" placeholder="" name="email" autocomplete="off" value="{{ old('email') }}"  required/>
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+								<input class="form-control form-control-solid" type="email" placeholder="Enter Email" name="email" autocomplete="off" value="{{ old('email') }}"  required/>
+								@error('email')
+									<span class="text-danger">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
                             </div>
 							<!--end::Input group-->
 						
 							<!--begin::Row-->
 							<div class="fv-row mb-10">
 								<label class="form-label fw-bolder text-dark fs-6">Password</label>
-								<input class="form-control form-control-solid" type="password" placeholder="" name="password" autocomplete="off" />
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+								<input class="form-control form-control-solid" type="password" placeholder="Enter Password" name="password" autocomplete="off" />
+								@error('password')
+									<span class="text-danger">
+										<strong>{{ $message }}</strong>
+									</span>
+								@enderror
                             </div>
 							<!--end::Row-->
 							<!--begin::Row-->

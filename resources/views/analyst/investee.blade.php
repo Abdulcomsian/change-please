@@ -21,8 +21,9 @@
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button
-        class="nav-link active"
+        class="nav-link active investee-btn"
         id="home-tab"
+        data-investee-type="all"
         data-bs-toggle="tab"
         data-bs-target="#home"
         type="button"
@@ -33,9 +34,10 @@
         All
       </button>
     </li>
-    <li class="nav-item" role="presentation">
+    {{-- <li class="nav-item" role="presentation">
       <button
-        class="nav-link"
+        class="nav-link investee-btn"
+        data-investee-type="approved"
         id="profile-tab"
         data-bs-toggle="tab"
         data-bs-target="#profile"
@@ -44,12 +46,13 @@
         aria-controls="profile"
         aria-selected="false"
       >
-        Accepted
+        Approved
       </button>
     </li>
     <li class="nav-item" role="presentation">
       <button
-        class="nav-link"
+        class="nav-link investee-btn"
+        data-investee-type="reject"
         id="contact-tab"
         data-bs-toggle="tab"
         data-bs-target="#contact"
@@ -58,9 +61,24 @@
         aria-controls="contact"
         aria-selected="false"
       >
-        Refused
+        Rejected
       </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link investee-btn"
+        data-investee-type="pending"
+        id="contact-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#contact"
+        type="button"
+        role="tab"
+        aria-controls="contact"
+        aria-selected="false"
+      >
+        Pending
+      </button>
+    </li> --}}
     {{-- <li class="nav-item" role="presentation">
       <button
         class="nav-link"
@@ -152,7 +170,7 @@
         </table>
       </div>
     </div>
-    <div
+    {{-- <div
       class="tab-pane fade"
       id="profile"
       role="tabpanel"
@@ -175,7 +193,7 @@
       aria-labelledby="contact-tab"
     >
       Complete Report
-    </div>
+    </div> --}}
   </div>
 @endsection
 @section('script')
@@ -195,6 +213,12 @@
                 ]
             });
       })();
+
+      $(".investee-btn").on("click" , function(e){
+        let element = e.target;
+        let type = element.dataset.investeeType;
+        
+      })
   }
 </script>
 @endsection
