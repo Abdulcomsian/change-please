@@ -108,5 +108,15 @@ class Plan{
         }   
     }
 
+    public function analyst_delete_plan($request)
+    {
+        $planId = $request->planId;
+
+        UserPlan::where("id",$planId)->delete();
+
+        return response()->json(['success' => true , 'msg' => "Plan Deleted Successfully "]);
+
+    }
+
 
 }

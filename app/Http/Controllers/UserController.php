@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Plan;
 use App\Http\Repository\Home;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -66,5 +67,19 @@ class UserController extends Controller
     public function get_investee_answers()
     {
         return view('user.answer');
+    }
+    public function analyst_delete_investee(Request $request)
+    {
+        try{
+        $userId = $request->investeeId;
+
+        User::where('id' , $userId)->delete();
+
+        return response()->json(['success' => true , 'msg' => 'Investee Deleted Successfully']);
+
+        } catch(\Exception $e){
+
+            return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'error' => $e->getMessage()]);
+        }
     }
 }

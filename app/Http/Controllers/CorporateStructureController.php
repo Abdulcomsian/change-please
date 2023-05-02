@@ -16,9 +16,9 @@ class CorporateStructureController extends Controller
         $this->corporateStructure  = $corporateStructure;
     }
 
-    public function get_corporate_structure()
+    public function get_corporate_structure(Request $request)
     {
-        return view('analyst.questions.corporate_structure');
+        return $this->corporateStructure->get_corporate_structure_plan_detail($request);
     }
     
     public function add_corporate_structure(Request $request)
@@ -26,5 +26,10 @@ class CorporateStructureController extends Controller
         $request->validate($this->rules);
         
         return $this->corporateStructure->add_corporate_structure_plan($request);
+    }
+
+    public function add_corporate_structure_rating(Request $request)
+    {
+        return $this->corporateStructure->corporate_structure_rating($request);
     }
 }

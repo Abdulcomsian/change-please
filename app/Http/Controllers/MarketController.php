@@ -17,14 +17,22 @@ class MarketController extends Controller
     }
 
 
-    public function get_market()
+    public function get_market(Request $request)
     {
-        return view('analyst.questions.market');
+
+      return  $this->market->get_market_plan_detail($request);
+
     }
+    
     public function add_market(Request $request)
     {
         $request->validate($this->rule);
 
         return $this->market->add_market_plan($request);        
+    }
+
+    public function add_market_rating(Request $request)
+    {
+        return $this->market->market_rating($request);
     }
 }

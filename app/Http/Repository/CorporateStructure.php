@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Repository;
 use App\Models\CorporateStructure as CorporateStructurePlan;
+use App\Models\Feedback;
 
 class CorporateStructure{
     
@@ -28,5 +29,54 @@ class CorporateStructure{
         {
             return response()->json(["success" => false , "msg" =>"Error While Uploading Corporate Structure Plan" ]);
         }
+    }
+
+    public function get_corporate_structure_plan_detail($request)
+    {
+        $planId = $request->id;
+
+        $corporateStructureDetail = CorporateStructurePlan::where("plan_id" , $planId)->first();
+
+        return view('analyst.questions.corporate_structure')->with(["planId" => $planId, "corporateStructureDetail" => $corporateStructureDetail]);
+    }
+
+    public function corporate_structure_rating($request)
+    {
+        try{
+            $score = $request->score;
+            $feedback = $request->feedback;
+            // $planableId = $request->planabaleId;
+            $planableType = $request->planableType;
+            $planId = $request->planId;
+            $userId = auth()->user()->id;
+    
+    
+            $planableId = CorporateStructurePlan::updateOrCreate(
+                ['plan_id' => (int)$planId],
+                [
+                    'rating' => (int)$score
+                ]
+            );
+    
+            $check = [ null , ""];
+    
+            if(!in_array( trim($feedback) , $check))
+            {
+                Feedback::create([
+                    "planable_id"  => $planableId->id,
+                    "planable_type" => $planableType,
+                    "description" => $feedback,
+                    "analyst_id"  => $userId,
+                ]);
+            }
+    
+            return response()->json(["success" => true , "msg" => "Score Added Successfully"] );
+    
+            }
+            catch(\Exception $e)
+            {
+                return response()->json(["success" => true , "msg" => "Something Went Wrong" , "error" => $e->getMessage()] );
+            }
+    
     }
 }

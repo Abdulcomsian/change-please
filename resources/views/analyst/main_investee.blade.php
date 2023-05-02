@@ -23,6 +23,25 @@
       referrerpolicy="no-referrer"
     />
 
+     <!-- bootstrap 5 js -->
+     <script
+     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+     crossorigin="anonymous"
+   ></script>
+
+   <!-- load jquery cdn -->
+   <script
+     src="https://code.jquery.com/jquery-3.6.1.min.js"
+     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+     crossorigin="anonymous"
+   ></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{asset('css/main.css')}}" />
@@ -123,57 +142,58 @@
               </p>
               <div class="dash_side_menu">
                 <a
-                  href="{{route('analyst.market')}}"
-                  class="nav_link {{(request()->is('analyst/investee/market')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/market')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/market/*')) ? 'active' : ''}}"
                   >Market
                 </a>
                 <a
-                  href="{{route('analyst.traction')}}"
-                  class="nav_link {{(request()->is('analyst/investee/traction')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/traction')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/traction/*')) ? 'active' : ''}}"
                   >Traction
                 </a>
                 <a
-                  href="{{route('analyst.team')}}"
-                  class="nav_link {{(request()->is('analyst/investee/team')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/team')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/team/*')) ? 'active' : ''}}"
                   >Team
                 </a>
                 <a
-                  href="{{route('analyst.competition')}}"
-                  class="nav_link {{(request()->is('analyst/investee/competition')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/competition')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/competition/*')) ? 'active' : ''}}"
                   >Competition
                 </a>
                 <a
-                  href="{{route('analyst.financial')}}"
-                  class="nav_link {{(request()->is('analyst/investee/financial')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/financial')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/financial/*')) ? 'active' : ''}}"
                   >Financials
                 </a>
                 <a
-                  href="{{route('analyst.intellectual_property')}}"
-                  class="nav_link {{(request()->is('analyst/investee/intellectual-property')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/intellectual-property')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/intellectual-property/*')) ? 'active' : ''}}"
                   >Intellectual Property
                 </a>
                 <a
-                  href="{{route('analyst.funds')}}"
-                  class="nav_link {{(request()->is('analyst/investee/funds')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/funds')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/funds/*')) ? 'active' : ''}}"
                   >Use of Funds</a
                 >
                 <a
-                  href="{{route('analyst.business_model')}}"
-                  class="nav_link {{(request()->is('analyst/investee/business-model')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/business-model')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/business-model/*')) ? 'active' : ''}}"
                   >Business Model</a
                 >
                 <a
-                  href="{{route('analyst.corporate_structure')}}"
-                  class="nav_link {{(request()->is('analyst/investee/corporate-structure')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/corporate-structure')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/corporate-structure/*')) ? 'active' : ''}}"
                   >Corporate Structure</a
                 >
                 <a
-                  href="{{route('analyst.existing_financial_round')}}"
-                  class="nav_link {{(request()->is('analyst/investee/existing-financial-round')) ? 'active' : ''}}"
+                  href="{{url('analyst/investee/existing-financial-round')}}/{{$planId}}"
+                  class="nav_link {{(request()->is('analyst/investee/existing-financial-round/*')) ? 'active' : ''}}"
                   >Existing Financing Round</a
                 >
               </div>
               <!-- rating models -->
+              <input type="hidden" name="planId" value="{{$planId}}" id="planId">
               <div class="rating_models">
                 <!-- Modal -->
                 <div
@@ -221,25 +241,25 @@
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="poor()" />
+                            <input type="radio" name="score" value="1" onclick="poor()" />
                             <label for="score">1</label>
                           </div>
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="poor()" />
+                            <input type="radio" name="score" value="2" onclick="poor()" />
                             <label for="score">2</label>
                           </div>
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="poor()" />
+                            <input type="radio" name="score" value="3" onclick="poor()" />
                             <label for="score">3</label>
                           </div>
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="poor()" />
+                            <input type="radio" name="score" value="4" onclick="poor()" />
                             <label for="score">4</label>
                           </div>
                           <div
@@ -248,6 +268,7 @@
                             <input
                               type="radio"
                               name="score"
+                              value="5"
                               onclick="average()"
                             />
                             <label for="score">5</label>
@@ -258,6 +279,7 @@
                             <input
                               type="radio"
                               name="score"
+                              value="6"
                               onclick="average()"
                             />
                             <label for="score">6</label>
@@ -268,6 +290,7 @@
                             <input
                               type="radio"
                               name="score"
+                              value="7"
                               onclick="average()"
                             />
                             <label for="score">7</label>
@@ -275,19 +298,19 @@
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="good()" />
+                            <input type="radio" name="score" value="8" onclick="good()" />
                             <label for="score">8</label>
                           </div>
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="good()" />
+                            <input type="radio" name="score" value="9" onclick="good()" />
                             <label for="score">9</label>
                           </div>
                           <div
                             class="input-group flex-column align-items-center"
                           >
-                            <input type="radio" name="score" onclick="good()" />
+                            <input type="radio" name="score" value="10" onclick="good()" />
                             <label for="score">10</label>
                           </div>
                         </div>
@@ -303,7 +326,7 @@
                       <div
                         class="modal-footer rating_footer border-0 pt-0 d-flex justify-content-center"
                       >
-                        <button type="button" class="btn btn-blue">Rate</button>
+                        <button type="button" class="btn btn-blue" id="rate">Rate</button>
                       </div>
                     </div>
                   </div>
@@ -345,19 +368,7 @@
       </p>
     </footer>
 
-    <!-- bootstrap 5 js -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- load jquery cdn -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.1.min.js"
-      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-      crossorigin="anonymous"
-    ></script>
+   
 
     <!-- rating js -->
     <script>
@@ -376,5 +387,6 @@
         $(".dot.green").addClass("active");
       }
     </script>
+    @yield('script')
   </body>
 </html>

@@ -15,9 +15,9 @@ class CompetitionController extends Controller
         $this->competition  = $competition;
     }
 
-    public function get_competition()
+    public function get_competition(Request $request)
     {
-        return view('analyst.questions.competition');
+        return $this->competition->get_competition_plan_detail($request);
     }
 
     public function add_competition(Request $request)
@@ -25,5 +25,10 @@ class CompetitionController extends Controller
         $request->validate($this->rules);
         
         return $this->competition->add_competition_plan($request);
+    }
+
+    public function add_competition_rating(Request $request)
+    {
+        return $this->competition->competition_rating($request);
     }
 }

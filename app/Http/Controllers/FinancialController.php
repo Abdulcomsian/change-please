@@ -16,9 +16,10 @@ class FinancialController extends Controller
         $this->financial  = $financial;
     }
 
-    public function get_financial()
+    public function get_financial(Request $request)
     {
-        return view('analyst.questions.financial');
+        return $this->financial->get_financial_plan_detail($request);
+
     }
 
     public function add_financial(Request $request)
@@ -26,5 +27,10 @@ class FinancialController extends Controller
         $request->validate($this->rules);
         
         return $this->financial->add_financial_plan($request);
+    }
+
+    public function add_financial_rating(Request $request)
+    {
+        return $this->financial->financial_rating($request);
     }
 }

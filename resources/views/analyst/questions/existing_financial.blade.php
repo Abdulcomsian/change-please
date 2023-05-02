@@ -10,8 +10,7 @@
           <span>Question 1: </span>What is your exit goal?(i.e IPO, M&A)
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->exit_goal : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -19,8 +18,7 @@
           <span>Question 2: </span>What is your expected time frame for this?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->expected_time_frame : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -28,8 +26,7 @@
           <span>Question 3: </span>Who do you imagine will help you exit?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->help_exit : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -37,8 +34,7 @@
           <span>Question 4: </span>When do you expect you will be conducting a follow up round of fundraising?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->follow_up_round : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -46,8 +42,7 @@
           <span>Question 5: </span>How much money is your pre-money valuation?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->valuation : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -55,8 +50,7 @@
           <span>Question 6: </span>how are you determining current valuation?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->current_valuation : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -64,8 +58,7 @@
           <span>Question 7: </span>How much are you trying to raise now?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->current_raisings : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -73,8 +66,7 @@
           <span>Question 8: </span>How many previous investors will participate in this round?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->previous_investor : "--"}}
         </p>
       </div>
       <div class="qs_box">
@@ -82,8 +74,7 @@
           <span>Question 9: </span>What is the next milestone this money will take you to?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->next_milestone : "--"}}
         </p>
       </div>
     </div>
@@ -92,8 +83,7 @@
           <span>Question 10: </span>How else do you hope an investor will help beyond money?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->investor_help : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -101,8 +91,7 @@
           Numbers of customer
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->total_customer : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -110,8 +99,7 @@
           What country based in?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->operation_country : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -119,8 +107,7 @@
           What countries do you operate in?
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->founded_date : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -128,8 +115,7 @@
           Date Founded
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->full_time_employee : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -137,8 +123,7 @@
             Stage of maturity
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->maturity : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -146,8 +131,7 @@
           Number of full-time employees
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->full_time_employee : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -155,8 +139,7 @@
           Annual revenue 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->annual_revenue : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -164,8 +147,7 @@
           Projected revenue 2023, 2024, 2025, 2026, 2027
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->projected_revenue : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -173,8 +155,7 @@
           Net Profit 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->net_profit : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -182,8 +163,7 @@
           Cach Balance (31 Dec 2021)
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->cach_balance : "--"}}
         </p>
     </div>
     <div class="qs_box">
@@ -191,8 +171,7 @@
           Funding request
         </p>
         <p>
-          <span>Answer: </span>Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Vitae dictum congue viverra bibendum.
+          <span>Answer: </span>{{isset($existingFinancialDetail) ? $existingFinancialDetail->funding_request : "--"}}
         </p>
     </div>
     <!-- btns -->
@@ -206,4 +185,45 @@
 
     </div>
 
+@endsection
+@section('script')
+<script>
+  let rateButton = document.getElementById("rate");
+  rateButton.addEventListener("click" , function(e){
+    let scoreRadio = document.querySelector("input[name='score']:checked");
+    let check = [undefined , null , ""]
+    if(check.includes(scoreRadio))
+    {
+      toast.error("Please select score");
+      return;
+    }
+
+    let score = scoreRadio.value;
+    let feedback = document.getElementById("comment").value;
+    let planableType = "existing-financial";
+    let planId = document.getElementById("planId").value;
+
+    $.ajax({
+        url : "{{route('add.existing.financial.rating')}}",
+        type : "post",
+        data : {
+          score: score,
+          feedback : feedback,
+          planableType : planableType,
+          planId : planId,
+          _token : '{{csrf_token()}}'
+        },
+        success : function(res){
+          if(res.success == true)
+          {
+            toastr.success(res.msg);
+            $("#model1").modal("toggle");
+          }else{
+            toastr.error(res.msg);
+          }
+        } 
+    });
+
+  })
+</script>
 @endsection

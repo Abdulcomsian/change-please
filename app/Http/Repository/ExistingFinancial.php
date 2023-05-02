@@ -11,6 +11,7 @@ use App\Models\{
     BusinessModel,
     Funds,
     CorporateStructure,
+    Feedback
 };
 
 class ExistingFinancial{
@@ -60,5 +61,54 @@ class ExistingFinancial{
         {
             return response()->json(["success" => false , "msg" =>"Error While Uploading Existing Financial Round Plan" ]);
         }
+    }
+
+    public function get_existing_financial_plan_detail($request)
+    {
+        $planId = $request->id;
+
+        $existingFinancialDetail = ExistingFinancialPlan::where('plan_id' , $planId)->first();
+
+        return view('analyst.questions.existing_financial')->with(['planId' => $planId , 'existingFinancialDetail' => $existingFinancialDetail]);
+    }
+
+    public function existing_financial_rating($request)
+    {
+        try{
+            $score = $request->score;
+            $feedback = $request->feedback;
+            // $planableId = $request->planabaleId;
+            $planableType = $request->planableType;
+            $planId = $request->planId;
+            $userId = auth()->user()->id;
+    
+    
+            $planableId = ExistingFinancialPlan::updateOrCreate(
+                ['plan_id' => (int)$planId],
+                [
+                    'rating' => (int)$score
+                ]
+            );
+    
+            $check = [ null , ""];
+    
+            if(!in_array( trim($feedback) , $check))
+            {
+                Feedback::create([
+                    "planable_id"  => $planableId->id,
+                    "planable_type" => $planableType,
+                    "description" => $feedback,
+                    "analyst_id"  => $userId,
+                ]);
+            }
+    
+            return response()->json(["success" => true , "msg" => "Score Added Successfully"] );
+    
+            }
+            catch(\Exception $e)
+            {
+                return response()->json(["success" => true , "msg" => "Something Went Wrong" , "error" => $e->getMessage()] );
+            }
+    
     }
 }

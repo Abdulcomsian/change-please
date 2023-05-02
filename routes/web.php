@@ -38,6 +38,8 @@ Auth::routes();
 
 Route::view('invester/login' , 'invester.invester-login')->name('invester.login');
 
+Route::view('investee/signup' , 'investee.investee-signup')->name('investee.signup');
+
 Route::get('/' , [UserController::class ,'get_home'])->name('main.home');
 
 Route::get('/home' , [UserController::class ,'get_home'])->name('user.home');
@@ -157,17 +159,31 @@ Route::group(["prefix" => "analyst"] , function(){
         Route::get("/investee-plan/{id}",[InvesteeController::class , 'get_investee_plan']);
         Route::post("/investee-plan-list",[InvesteeController::class , 'investee_plan_list'])->name('analyst.investee.plan');
         Route::get("/get-investee-list" ,[InvesteeController::class , 'get_investee_list'])->name('analyst.investee.list');
+        Route::get("/edit-investee-plan/{id}" , [InvesteeController::class ,'get_edit_investee_plan']);
+        Route::post("update-analyst-status" , [InvesteeController::class , 'update_investee_plan_status'])->name('update.analyst.status');
+        Route::post("add-marketing-rating" , [MarketController::class , 'add_market_rating'])->name("add.market.rating");
+        Route::post("add-business-model-rating" , [BusinessModelController::class , 'add_business_model_rating'])->name("add.business.model.rating");
+        Route::post("add-competition-rating" , [CompetitionController::class , 'add_competition_rating'])->name("add.competition.rating");
+        Route::post("add-corporate-structure-rating" , [CorporateStructureController::class , 'add_corporate_structure_rating'])->name("add.corporate.structure.rating");
+        Route::post("add-existing-financial-rating" , [ExistingFinancialRoundController::class , 'add_existing_financial_rating'])->name("add.existing.financial.rating");
+        Route::post("add-financial-rating" , [FinancialController::class , 'add_financial_rating'])->name("add.financial.rating");
+        Route::post("add-funds-rating" , [FundsController::class , 'add_funds_rating'])->name("add.funds.rating");
+        Route::post("add-intellectual-property-rating" , [IntellectualPropertyController::class , 'add_intellectual_property_rating'])->name("add.intellectual.property.rating");
+        Route::post("add-team-rating" , [TeamController::class , 'add_team_rating'])->name("add.team.rating");
+        Route::post("add-traction-rating" , [TractionController::class , 'add_traction_rating'])->name("add.traction.rating");
+        Route::post("analyst-delete-plan" , [PlanController::class , "analyst_delete_plan"])->name("analyst.delete.plan");
+        Route::post("analyst-delete-investee" , [UserController::class , "analyst_delete_investee"])->name("analyst.delete.investee");
         Route::group(["prefix"=>"investee"], function(){
-            Route::get("/business-model" ,[BusinessModelController::class,'get_business_model'])->name('analyst.business_model');
-            Route::get("/competition",[CompetitionController::class ,'get_competition'])->name('analyst.competition');
-            Route::get("/corporate-structure",[CorporateStructureController::class ,'get_corporate_structure'])->name('analyst.corporate_structure');
-            Route::get("/existing-financial-round",[ExistingFinancialRoundController::class , 'get_existing_financial_round'])->name('analyst.existing_financial_round');
-            Route::get("/financial",[FinancialController::class , 'get_financial'])->name('analyst.financial');
-            Route::get("/funds",[FundsController::class , 'get_funds'])->name('analyst.funds');
-            Route::get("/intellectual-property" ,[IntellectualPropertyController::class , 'get_intellectual_property'])->name('analyst.intellectual_property');
-            Route::get("/market" ,[MarketController::class,'get_market'])->name('analyst.market');
-            Route::get("/team" ,[TeamController::class , 'get_team'])->name('analyst.team');
-            Route::get("/traction" ,[TractionController::class , 'get_traction'])->name('analyst.traction');
+            Route::get("/business-model/{id}" ,[BusinessModelController::class,'get_business_model']);
+            Route::get("/competition/{id}",[CompetitionController::class ,'get_competition']);
+            Route::get("/corporate-structure/{id}",[CorporateStructureController::class ,'get_corporate_structure']);
+            Route::get("/existing-financial-round/{id}",[ExistingFinancialRoundController::class , 'get_existing_financial_round']);
+            Route::get("/financial/{id}",[FinancialController::class , 'get_financial']);
+            Route::get("/funds/{id}",[FundsController::class , 'get_funds']);
+            Route::get("/intellectual-property/{id}" ,[IntellectualPropertyController::class , 'get_intellectual_property']);
+            Route::get("/market/{id}" ,[MarketController::class,'get_market']);
+            Route::get("/team/{id}" ,[TeamController::class , 'get_team']);
+            Route::get("/traction/{id}" ,[TractionController::class , 'get_traction']);
         });
         
         Route::get('/logout' , [AnalystController::class , 'logout'])->name('analyst.logout');

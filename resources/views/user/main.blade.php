@@ -119,7 +119,10 @@
             @else
             <div class="btns"> 
               <a href="{{route('login')}}" class="btn btn-blue-outline">Login</a>
-          </div>
+            </div>
+            <div class="btns"> 
+              <a href="{{route('investee.signup')}}" class="btn btn-blue-outline">Sign Up</a>
+            </div>
             @endif
             
           </ul>

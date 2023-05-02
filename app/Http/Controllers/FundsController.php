@@ -16,13 +16,18 @@ class FundsController extends Controller
         $this->funds = $funds;
     }
 
-    public function get_funds()
+    public function get_funds(Request $request)
     {
-        return view('analyst.questions.funds');
+        return $this->funds->get_funds_plan_detail($request);
     }
 
     public function add_funds(Request $request)
     {
         return $this->funds->add_funds_plan($request);
+    }
+
+    public function add_funds_rating(Request $request)
+    {
+        return $this->funds->funds_rating($request);
     }
 }

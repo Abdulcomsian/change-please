@@ -10,13 +10,13 @@
       dictum congue viverra bibendum.
     </p>
   </div>
-  <div class="sortBy d-flex justify-content-end">
+  {{-- <div class="sortBy d-flex justify-content-end">
     <label for="sort">Sort By:</label>
     <select name="sort" id="sort">
       <option value="1">Newest</option>
       <option value="2">Oldest</option>
     </select>
-  </div>
+  </div> --}}
   <!-- =========== table tabs ========== -->
  
   <div class="tab-content" id="myTabContent">
@@ -48,23 +48,12 @@
 <script>
    window.onload = function(){
     (function(){
+      loadTable();
+    })();
 
-    //   $("#investee-list").DataTable({
-    //             processing: true,
-    //             serverSide: true,
-    //             pagingType: 'full_numbers',
-    //             ajax: '{{ route("analyst.investee.plan") }}',
-    //             columns: [
-    //                 { data: 'DT_RowIndex', 'orderable': false, 'searchable': false },
-    //                 { data: 'cname', name: 'cname' },
-    //                 { data: 'investment', name: 'investment' },
-    //                 { data: 'amount', name: 'amount' },
-    //                 { data: 'country', name: 'country' },
-    //                 { data: 'city', name: 'city' },
-    //                 { data: 'status', name: 'status' },
-    //                 { data: 'action', name: 'action' },
-    //             ]
-    //         });
+  }
+
+  function loadTable(){
     let investeeId = document.getElementById("investeeId").value;
     $('#investee-plan').DataTable({
 					processing: true,
@@ -91,8 +80,46 @@
                                 { data: 'action', name: 'action' },
                             ]
 				})
-      })();
-
   }
+
+  $(document).ready(function() {
+    
+    $(document).on("click" , ".delete-plan" , function(e){
+      let planId = this.dataset.planId;
+      Swal.fire({
+              title: 'Are you sure?',
+              text: 'All the data will be remove related to this plan',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#dc3545',
+              cancelButtonColor: '#6c757d',
+              confirmButtonText: 'Delete',
+              cancelButtonText: 'Cancel'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                $.ajax({
+                  url : "{{route('analyst.delete.plan')}}",
+                  type : "POST",
+                  data : {
+                    _token : "{{csrf_token()}}",
+                    planId : planId
+                  },
+                  success : function(res){
+                    if(res.success == true)
+                    {
+                      toastr.success(res.msg)
+                      loadTable();
+                    }else{
+                      toastr.error(res.msg);
+                    }
+                  }
+                })
+              }
+          });
+  });
+
+    
+  })
+  
 </script>
 @endsection

@@ -16,9 +16,9 @@ class TractionController extends Controller
         $this->traction  = $traction;
     }
 
-    public function get_traction()
+    public function get_traction(Request $request)
     {
-        return view('analyst.questions.traction');
+        return $this->traction->get_traction_plan_detail($request); 
     }
 
     public function add_traction(Request $request)
@@ -26,5 +26,10 @@ class TractionController extends Controller
         $request->validate($this->rules);
         
         return $this->traction->add_traction_plan($request);
+    }
+
+    public function add_traction_rating(Request $request)
+    {
+        return $this->traction->traction_rating($request);
     }
 }

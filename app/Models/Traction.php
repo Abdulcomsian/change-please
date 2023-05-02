@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Plan;
+
 class Traction extends Model
 {
     use HasFactory;
@@ -31,4 +32,6 @@ class Traction extends Model
     {
         return $this->belongsTo(Plan::class ,'plan_id' ,'id');
     } 
+
+    
 }

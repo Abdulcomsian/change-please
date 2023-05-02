@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Repository;
 use App\Models\BusinessModel as BusinessPlan;
+use App\Models\Feedback;
 
 class BusinessModel{
     
@@ -28,5 +29,55 @@ class BusinessModel{
         {
             return response()->json(["success" => false , "msg" =>"Error While Adding Business Model Plan " ]);
         }
+    }
+
+    public function get_business_model_plan_detail($request)
+    {
+        $planId = $request->id;
+
+        $businessModelDetail = BusinessPlan::where('plan_id' , $planId)->first();
+
+        return view('analyst.questions.business_model')->with(["planId" => $planId , "businessModelDetail" => $businessModelDetail]);
+
+    }
+
+    public function business_model_rating($request)
+    {
+        try{
+            $score = $request->score;
+            $feedback = $request->feedback;
+            // $planableId = $request->planabaleId;
+            $planableType = $request->planableType;
+            $planId = $request->planId;
+            $userId = auth()->user()->id;
+    
+    
+            $planableId = BusinessPlan::updateOrCreate(
+                ['plan_id' => (int)$planId],
+                [
+                    'rating' => (int)$score
+                ]
+            );
+    
+            $check = [ null , ""];
+    
+            if(!in_array( trim($feedback) , $check))
+            {
+                Feedback::create([
+                    "planable_id"  => $planableId->id,
+                    "planable_type" => $planableType,
+                    "description" => $feedback,
+                    "analyst_id"  => $userId,
+                ]);
+            }
+    
+            return response()->json(["success" => true , "msg" => "Score Added Successfully"] );
+    
+            }
+            catch(\Exception $e)
+            {
+                return response()->json(["success" => true , "msg" => "Something Went Wrong" , "error" => $e->getMessage()] );
+            }
+    
     }
 }

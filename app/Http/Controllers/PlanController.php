@@ -59,10 +59,22 @@ class PlanController extends Controller
         
         $totalPlan = $request->totalPlan;
         $plan = $this->home->get_home_details($totalPlan);
+        Plan::where('id' , $planId)->delete();
         return response()->json(['projects' => view('components.planList',['plans' => $plan])->render() , 'success' => true ]);    
         
-        }catch(Exception $e) {
+        }catch(\Exception $e) {
             return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'error' => $e->getMessage()]);
+        }
+    }
+
+    public function analyst_delete_plan(Request $request)
+    {
+        try{
+
+            return $this->plan->analyst_delete_plan($request);
+
+        }catch(\Exception $e){
+            return response()->json(["success" => false , "msg" => "Something Went Wrong" , "error" => $e->getMessage()]);
         }
     }
 

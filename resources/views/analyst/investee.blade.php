@@ -200,25 +200,63 @@
 <script>
    window.onload = function(){
     (function(){
-      $("#investee-list").DataTable({
-                processing: true,
-                serverSide: true,
-                pagingType: 'full_numbers',
-                ajax: '{{ route('analyst.investee.list') }}',
-                columns: [
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'status', name: 'status' },
-                    { data: 'action', name: 'action' },
-                ]
-            });
-      })();
+      loadTable();
+    })();
 
-      $(".investee-btn").on("click" , function(e){
-        let element = e.target;
-        let type = element.dataset.investeeType;
-        
-      })
+
+    function loadTable()
+    {
+      $("#investee-list").DataTable({
+                  processing: true,
+                  serverSide: true,
+                  pagingType: 'full_numbers',
+                  "bDestroy": true,
+                  ajax: '{{ route('analyst.investee.list') }}',
+                  columns: [
+                      { data: 'name', name: 'name' },
+                      { data: 'email', name: 'email' },
+                      { data: 'status', name: 'status' },
+                      { data: 'action', name: 'action' },
+                  ]
+              });
+    }
+
+    $(document).on("click" , ".delete-investee" , function(){
+      let investeeId = this.dataset.investeeId;
+        Swal.fire({
+                title: 'Are you sure?',
+                text: 'All the data will be remove related to this Investee',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  $.ajax({
+                    url : "{{route('analyst.delete.investee')}}",
+                    type : "POST",
+                    data : {
+                      _token : "{{csrf_token()}}",
+                      investeeId : investeeId
+                    },
+                    success : function(res){
+                      if(res.success == true)
+                      {
+                        toastr.success(res.msg)
+                        loadTable();
+                      }else{
+                        toastr.error(res.msg);
+                      }
+                    }
+                  })
+                }
+            });
+    })
+
   }
+
+
 </script>
 @endsection

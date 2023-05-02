@@ -16,9 +16,9 @@ class BusinessModelController extends Controller
         $this->businessModel = $businessModel;
     }
 
-    public function get_business_model()
+    public function get_business_model(Request $request)
     {
-        return view('analyst.questions.business_model');
+        return $this->businessModel->get_business_model_plan_detail($request);
     }
 
     public function add_business_model(Request $request)
@@ -27,5 +27,10 @@ class BusinessModelController extends Controller
 
         return $this->businessModel->add_business_model_plan($request);
 
+    }
+
+    public function add_business_model_rating(Request $request)
+    {
+        return $this->businessModel->business_model_rating($request);
     }
 }

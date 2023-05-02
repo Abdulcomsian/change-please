@@ -16,9 +16,9 @@ class IntellectualPropertyController extends Controller
         $this->intellectualProperty  = $intellectualProperty;
     }
 
-    public function get_intellectual_property()
+    public function get_intellectual_property(Request $request)
     {
-        return view('analyst.questions.intellectual_property');
+        return $this->intellectualProperty->get_intellectual_property_plan_detail($request);
     }
     
     public function add_intellectual_property(Request $request)
@@ -26,5 +26,11 @@ class IntellectualPropertyController extends Controller
         $request->validate($this->rules);
         
         return $this->intellectualProperty->add_intellectual_property_plan($request);
+    }
+
+    public function add_intellectual_property_rating(Request $request)
+    {
+       
+        return $this->intellectualProperty->intellectual_property_rating($request);
     }
 }
