@@ -54,7 +54,7 @@
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{route('main.home')}}">
           <img src="{{asset('img/logo.png')}}" alt="logo" />
         </a>
         <button

@@ -1,12 +1,17 @@
 @extends('user.main')
 @section('main-content')
 <div class="container mt-5 mb-5">
-  <div class="dash_table_text">
-    <h3>Plans</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
-      dictum congue viverra bibendum.
-    </p>
+  <div class="dash_table_text d-flex justify-content-between">
+    <div>
+      <h3>Plans</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
+        dictum congue viverra bibendum.
+      </p>
+    </div>
+    <div>
+      <a type="button" class="text-light btn btn-primary" href="{{route('user.general_information')}}">Add Company</a>
+    </div>
   </div>
   <!-- =========== table tabs ========== -->
   <ul class="nav nav-tabs" id="myTab" role="tablist">

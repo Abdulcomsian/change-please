@@ -110,7 +110,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Content-->
 						<div class="d-flex flex-column">
 							<!--begin::Logo-->
-							<a href="index.html" class="mb-15">
+							<a href="{{route('main.home')}}" class="mb-15">
 								<img alt="Logo" src="{{asset('images/site-logo.png')}}" class="h-50px" />
 							</a>
 							<!--end::Logo-->

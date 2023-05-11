@@ -13,14 +13,14 @@
 
     {{-- steps starts here --}}
     <div class="stepper-wrapper">
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Market) && !is_null($plan->Market)) completed @endif">
         <div class="step-counter num">1</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
         </div>
         <div class="step-name">Market</div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Market) && !is_null($plan->Market) && !isset($plan->Traction) && is_null($plan->Traction)) next @endif @if(isset($plan->Traction) && !is_null($plan->Traction)) completed @endif">
         <div class="step-counter num">2</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -30,7 +30,7 @@
         </div>
         <div class="step-name">Traction</div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Traction) && !is_null($plan->Traction) && !isset($plan->Team) && is_null($plan->Team)) next @endif @if(isset($plan->Team) && !is_null($plan->Team)) completed @endif">
         <div class="step-counter num">3</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -40,7 +40,7 @@
         </div>
         <div class="step-name">Team</div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Team) && !is_null($plan->Team) && !isset($plan->Competition) && is_null($plan->Competition)) next @endif @if(isset($plan->Competition) && !is_null($plan->Competition)) completed @endif">
         <div class="step-counter num">4</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -50,7 +50,7 @@
         </div>
         <div class="step-name">Competition</div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Competition) && !is_null($plan->Competition) && !isset($plan->Financial) && is_null($plan->Financial)) next @endif @if(isset($plan->Financial) && !is_null($plan->Financial)) completed @endif">
         <div class="step-counter num">5</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -60,7 +60,7 @@
         </div>
         <div class="step-name">Financials</div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Financial) && !is_null($plan->Financial) && !isset($plan->IntellectualProperty) && is_null($plan->IntellectualProperty)) next @endif @if(isset($plan->IntellectualProperty) && !is_null($plan->IntellectualProperty)) completed @endif">
         <div class="step-counter num">6</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -73,7 +73,7 @@
           Property
         </div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->IntellecutalProperty) && !is_null($plan->IntellectualProperty) && !isset($plan->BusinessModel) && is_null($plan->BusinessModel)) next @endif @if(isset($plan->BusinessModel) && !is_null($plan->BusinessModel)) completed @endif">
         <div class="step-counter num">7</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -86,7 +86,7 @@
           Model
         </div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->BusinessModel) && !is_null($plan->BusinessModel) && !isset($plan->Fund) && is_null($plan->Fund)) next @endif @if(isset($plan->Fund) && !is_null($plan->Fund)) completed @endif">
         <div class="step-counter num">8</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -99,7 +99,7 @@
           Funds
         </div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item @if(isset($plan->Fund) && !is_null($plan->Fund) && !isset($plan->CorporateStructure) && is_null($plan->CorporateStructure)) next @endif @if(isset($plan->CorporateStructure) && !is_null($plan->CorporateStructure)) completed @endif">
         <div class="step-counter num">9</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -112,7 +112,7 @@
           Structure
         </div>
       </div>
-      <div class="stepper-item">
+      <div class="stepper-item ">
         <div class="step-counter num">10</div>
         <div class="step-counter check">
           <img src="{{asset('img/check.png')}}" alt="check">
@@ -131,13 +131,9 @@
     {{-- market question code starts here --}}
 
 
-    <div class="form_box">
+   
       <!-- progress steps start -->
-
-      
-
-      <!-- progress steps end -->
-
+    <div class="form_box @if(isset($plan->Market) && !is_null($plan->Market)) d-none @endif">
       <h2 class="form_box_title">Market</h2>
       <form>
         <div class="row align-items-center">
@@ -385,10 +381,8 @@
     </div>
 
     {{-- market code ends here --}}
-
-
     {{-- traction code ends here --}}
-    <div class="form_box d-none">
+    <div class="form_box @if(( !isset($plan->Market) || is_null($plan->Market) ) || (isset($plan->Traction) && !is_null($plan->Traction))  ) d-none @endif">
       <h2 class="form_box_title">Traction</h2>
       <form>
         <div class="row align-items-center">
@@ -636,7 +630,7 @@
     {{-- traction code ends here --}}
 
     {{-- Team code starts here --}}
-    <div class="form_box d-none">
+    <div class="form_box @if(!isset($plan->Traction) || is_null($plan->Traction) || (isset($plan->Team) && !is_null($plan->Team))) d-none @endif">
      <h2 class="form_box_title">Team</h2>
       <form>
         <div class="row align-items-center">
@@ -887,7 +881,7 @@
     
     {{-- Competition code starts here --}}
 
-    <div class="form_box d-none">
+    <div class="form_box @if( (!isset($plan->Team) || is_null($plan->Team)) || (isset($plan->Competition) && !is_null($plan->Competition))) d-none @endif">
      <h2 class="form_box_title">Competition</h2>
       <form>
         <div class="row align-items-center">
@@ -1136,8 +1130,7 @@
 
 
     {{-- Financial code starts here --}}
-
-    <div class="form_box d-none">
+    <div class="form_box @if(!isset($plan->Competition) || is_null($plan->Competition) || (isset($plan->Financial) && !is_null($plan->Financial)) ) d-none @endif">
      <h2 class="form_box_title">Financials</h2>
       <form>
         <div class="row align-items-center">
@@ -1387,7 +1380,7 @@
 
     {{-- Intellectual Property code starts here --}}
 
-    <div class="form_box d-none">
+    <div class="form_box @if((!isset($plan->Financial) || is_null($plan->Financial)) || (isset($plan->IntellectualProperty) && !is_null($plan->IntellectualProperty))) d-none @endif">
      <h2 class="form_box_title">Intellectual Property</h2>
       <form>
         <div class="row align-items-center">
@@ -1885,7 +1878,7 @@
     
 
     {{-- Use of funds code starts here --}}
-    <div class="form_box d-none">
+    <div class="form_box @if((!isset($plan->IntellectualProperty) || is_null($plan->IntellectualProperty)) || (isset($plan->Fund) && !is_null($plan->Fund)) ) d-none @endif">
      <h2 class="form_box_title">Use of Funds</h2>
       <form>
         <div class="row align-items-center">
@@ -2134,7 +2127,7 @@
 
     
     {{-- Corporate structure starts here --}}
-    <div class="form_box d-none">
+    <div class="form_box @if((!isset($plan->Fund) || is_null($plan->Fund)) || (isset($plan->CorporateStructure) && !is_null($plan->CorporateStructure)) ) d-none @endif">
       <h2 class="form_box_title">Corporate Structure</h2>
       <form>
         <div class="row align-items-center">
@@ -2384,7 +2377,7 @@
     
     {{-- Existing Financial Round Starts here --}}
 
-    <div class="form_box d-none">
+    <div class="form_box @if(!isset($plan->CorporateStructure) || is_null($plan->CorporateStructure)) d-none @endif">
       <h2 class="form_box_title">Existing Financial Round</h2>
       <form>
         <div class="row align-items-center">
@@ -2863,8 +2856,10 @@
 
   </div>
 
-
+ <!-- progress steps end -->
 <script>
+
+
 
 // Question form starts here
 

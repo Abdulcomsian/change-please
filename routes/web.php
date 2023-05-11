@@ -78,6 +78,14 @@ Route::group(['middleware' => ['auth' ,'auth.investee', 'preventBackHistory']] ,
     Route::get('/user-plan-list' , [PlanController::class , 'get_user_plan_list'])->name('user.plan_list');
     // delete user plan
     Route::get('/delete-plan/{id}' , [PlanController::class , 'delete_user_plan'])->name('delete-plan');
+    //Investee Question
+    Route::get('/investee-questions/{planId}', [UserController::class , 'get_investee_question_form'])->name('user.investee_question_form');
+    //User Profile
+    Route::get('/user-profile' , [UserController::class , "get_user_profile"])->name('user.profile');
+    //Update Username
+    Route::post('/update-username' , [UserController::class , "update_username"])->name('update.username');
+    //Update password
+    Route::post('/update-password' , [UserController::class , "update_password"])->name('update.password');
 
 });
 
@@ -93,7 +101,7 @@ Route::group(['middleware' => ['auth' ,'auth.investee', 'preventBackHistory']] ,
 
 
 
-Route::get('/investee-questions/{planId}', [UserController::class , 'get_investee_question_form'])->name('user.investee_question_form');
+
 Route::get('/general-information' , [UserController::class , 'get_general_information'])->name('user.general_information');
 Route::get('/services' , [UserController::class ,'get_service'])->name('user.service');
 Route::get('/offerings' , [UserController::class , 'get_offerings'])->name('user.offerings');

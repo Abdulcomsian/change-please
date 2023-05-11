@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Analyst;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Auth;
-use Validator;
 
 class AnalystController extends Controller
 {
@@ -77,7 +77,7 @@ class AnalystController extends Controller
                 return response()->json(['success' => true , 'msg' => 'Analyst added successfully']);
             }
         }
-        catch(Exception $e){
+        catch(\Exception $e){
 
             return response()->json(['success' => false , 'msg' => 'Something went wrong' , 'error' => $e->getMessage()]);
         

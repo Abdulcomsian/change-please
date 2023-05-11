@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Plan;
 use App\Http\Repository\Home;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -80,6 +82,74 @@ class UserController extends Controller
         } catch(\Exception $e){
 
             return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'error' => $e->getMessage()]);
+        }
+    }
+
+    public function get_user_profile()
+    {
+        return view('user.user_profile');
+    }
+
+    public function update_username(Request $request)
+    {
+        try{
+            $validate = Validator::make($request->all() , [
+                'id' => 'integer|required',
+                'name' => 'required'
+            ]);
+
+            if($validate->fails())
+            {
+                return response()->json(['success' => false , 'msg'=> 'Something Went Wrong' , 'error' => $validate->getMessageBag()]);
+            }else{
+
+                $userId = $request->id;
+                $username = $request->name;
+                User::where('id',$userId)->update(['name' => $username]);
+                return response()->json(['success' => true , 'msg'=> 'User name updated successfully']);
+            }
+        
+        }
+        catch(\Exception $e){
+            return response()->json(['success' => false , 'msg'=> 'Something Went Wrong' , 'error' => $e->getMessage()]);
+        }
+
+
+    }
+
+    public function update_password(Request $request)
+    {
+        // dd($request->all());
+        try{
+            $validate = Validator::make($request->all() , [
+                'id'          => 'required|integer',
+                'old_password' => 'required',
+                'password' => 'required|confirmed'
+            ]);
+            // dd($request->all());
+
+            if($validate->fails())
+            {
+                return response()->json(['success' => false , 'msg'=> 'Something Went Wrong' , 'error' => $validate->getMessageBag()]);
+            }else{
+                $password = $request->old_password;
+                $newPassword = $request->password;
+                $userId = $request->id;
+                if(Hash::check($password , auth()->user()->password))
+                {
+                    // $2y$10$NIzzYK3cvQ0LZYCWAWb0suWQF1r2Z09sbGJIbzVXabruNO2EuHUbq
+                    User::where('id',$userId)->update(['password' => Hash::make($newPassword)]);
+                    return response()->json(['success' => true , 'msg'=> 'Password updated successfully']);
+                }else{
+                    return response()->json(['success' => false , 'msg' => "You have entered a wrong password"]);
+                }
+            
+               
+            }
+        
+        }
+        catch(\Exception $e){
+            return response()->json(['success' => false , 'msg'=> 'Something Went Wrong' , 'error' => $e->getMessage()]);
         }
     }
 }

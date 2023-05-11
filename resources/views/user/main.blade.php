@@ -38,7 +38,7 @@
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('analyst.dashboard')}}">
+        <a class="navbar-brand" href="{{route('main.home')}}">
           <img src="{{asset('images/site-logo.png')}}" alt="logo" />
         </a>
         <button
@@ -90,11 +90,11 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>
             </li>
-            @if(auth()->user() && auth()->user()->role == 1)
+            {{-- @if(auth()->user() && auth()->user()->role == 1)
             <li class="nav-item">
               <a class="nav-link" href="{{route('user.plans')}}">Plan</a>
             </li>
-            @endif
+            @endif --}}
             <li class="nav-item">
               <a class="nav-link" href="{{route('user.filter')}}">Projects</a>
             </li>
@@ -113,15 +113,22 @@
               </svg>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @if(auth()->user())
+                  <li><a class="dropdown-item" href="{{route('user.profile')}}">Profile</a></li>
+                @endif
+                @if(auth()->user() && auth()->user()->role == 1)
+                  <li><a class="dropdown-item" href="{{route('user.plans')}}">Plan</a></li>
+                @endif
                 <li><a class="dropdown-item" href="{{route('user.logout')}}">Sign Out</a></li>
               </ul>
             </li>
             @else
-            <div class="btns"> 
-              <a href="{{route('login')}}" class="btn btn-blue-outline">Login</a>
+            <div class="btns">
+              <a href="javascript:void(0)" class="btn bg-primary text-light btn-blue-outline" data-bs-toggle="modal" data-bs-target="#opt1">Login</a>
+              {{-- <a href="{{route('login')}}" class="btn btn-blue-outline">Login Here</a> --}}
             </div>
             <div class="btns"> 
-              <a href="{{route('investee.signup')}}" class="btn btn-blue-outline">Sign Up</a>
+              <a href="{{route('login')}}" class="btn btn-blue-outline">Sign Up</a>
             </div>
             @endif
             
@@ -133,6 +140,79 @@
         </div>
       </div>
     </nav>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="opt1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            @if($errors->any())
+              @if($errors->has('login_error'))
+                @foreach($errors->all() as $error)
+                  <div class="text-center"><strong class="text-danger">{{$error}}</strong></div>
+                @endforeach
+              @endif
+            @endif
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                <div id="emailHelp" class="form-text">
+                  We'll never share your email with anyone else.
+                </div>
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                />
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            {{-- <button type="button" class="btn btn-primary">Understood</button> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
 
     <!-- analyst page -->
 

@@ -50,7 +50,7 @@
   <body class="bg_gray">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('analyst.dashboard')}}">
+        <a class="navbar-brand" href="{{route('main.home')}}">
           <img src="{{asset('images/site-logo.png')}}" alt="logo" />
         </a>
         <button

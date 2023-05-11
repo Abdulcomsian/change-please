@@ -38,8 +38,9 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Brand-->
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
-						<a href="index.html">
-							<img alt="Logo" src="./metronic/chati-dashboard/assets/media/logos/logo-1-dark.svg" class="h-15px logo" />
+						<a href="{{route('main.home')}}">
+
+							<img alt="Logo" src="{{asset('images/site-logo.png')}}" class="h-45px logo" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Aside toggler-->
@@ -132,7 +133,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Aside mobile toggle-->
 							<!--begin::Mobile logo-->
 							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-								<a href="index.html" class="d-lg-none">
+								<a href="{{route('main.home')}}" class="d-lg-none">
 									<img alt="Logo" src="./metronic/chati-dashboard/assets/media/logos/logo-3.svg" class="h-30px" />
 								</a>
 							</div>
@@ -253,7 +254,9 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 											<!--begin::Menu wrapper-->
 											<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-												<img src="./metronic/chati-dashboard/assets/media/avatars/150-2.jpg" alt="metronic" />
+												<svg width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M14.1491 23.125H20.8509V21.625H14.1491V23.125ZM20.8509 23.125C23.4185 23.125 25.5 25.2065 25.5 27.7741H27C27 24.3781 24.2469 21.625 20.8509 21.625V23.125ZM14.1491 21.625C10.7531 21.625 8 24.3781 8 27.7741H9.5C9.5 25.2065 11.5815 23.125 14.1491 23.125V21.625ZM21.125 13.625C21.125 15.627 19.502 17.25 17.5 17.25V18.75C20.3305 18.75 22.625 16.4555 22.625 13.625H21.125ZM17.5 17.25C15.498 17.25 13.875 15.627 13.875 13.625H12.375C12.375 16.4555 14.6695 18.75 17.5 18.75V17.25ZM13.875 13.625C13.875 11.623 15.498 10 17.5 10V8.5C14.6695 8.5 12.375 10.7945 12.375 13.625H13.875ZM17.5 10C19.502 10 21.125 11.623 21.125 13.625H22.625C22.625 10.7945 20.3305 8.5 17.5 8.5V10ZM29.875 18C29.875 24.8345 24.3345 30.375 17.5 30.375V31.875C25.163 31.875 31.375 25.663 31.375 18H29.875ZM17.5 30.375C10.6655 30.375 5.125 24.8345 5.125 18H3.625C3.625 25.663 9.83705 31.875 17.5 31.875V30.375ZM5.125 18C5.125 11.1655 10.6655 5.625 17.5 5.625V4.125C9.83705 4.125 3.625 10.337 3.625 18H5.125ZM17.5 5.625C24.3345 5.625 29.875 11.1655 29.875 18H31.375C31.375 10.337 25.163 4.125 17.5 4.125V5.625Z" fill="#3B7CEE"></path>
+												</svg>
 											</div>
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -261,14 +264,16 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="menu-item px-3">
 													<div class="menu-content d-flex align-items-center px-3">
 														<!--begin::Avatar-->
-														<div class="symbol symbol-50px me-5">
-															<img alt="Logo" src="./metronic/chati-dashboard/assets/media/avatars/150-2.jpg" />
-														</div>
+														{{-- <div class="symbol symbol-50px me-5">
+															<a href="{{route('main.home')}}">
+																<img alt="Logo" src="./metronic/chati-dashboard/assets/media/avatars/150-2.jpg" />
+															</a>
+														</div> --}}
 														<!--end::Avatar-->
 														<!--begin::Username-->
 														<div class="d-flex flex-column">
-															<div class="fw-bolder d-flex align-items-center fs-5">Max Smith</div>
-															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+															<div class="fw-bolder d-flex align-items-center fs-5 text-center">{{auth()->user()->firstname}}</div>
+															<a href="javascript:void(0)" class="fw-bold text-muted text-hover-primary fs-7 text-center">{{auth()->user()->email}}</a>
 														</div>
 														<!--end::Username-->
 													</div>
