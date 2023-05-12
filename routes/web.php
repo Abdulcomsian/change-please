@@ -146,6 +146,15 @@ Route::group( ["prefix" => "admin"] , function(){
         Route::post('/add-analyst' , [AnalystController::class , 'add_analyst'])->name('admin.add.analyst');
         Route::post('/edit-analyst' , [AnalystController::class , 'edit_analyst'])->name('admin.edit.analyst');
         Route::post('/delete-analyst' , [AnalystController::class , 'delete_analyst'])->name('admin.delete.analyst');
+        Route::get('/investee-list' , [UserController::class,'get_investee_page'])->name('admin.investee.page');
+        Route::get('/invester-list' , [UserController::class,'get_invester_page'])->name('admin.invester.page');
+        Route::post('/investee-list' , [UserController::class,'get_investee_list'])->name('admin.investee.list');
+        Route::post('/invester-list' , [UserController::class,'get_invester_list'])->name('admin.invester.list');
+        Route::post('/update-investee' , [UserController::class,'update_investee'])->name('admin.update.investee');
+        Route::post('/update-invester' , [UserController::class,'update_invester'])->name('admin.update.invester');
+        Route::post('/delete-investee' , [UserController::class,'delete_investee'])->name('admin.delete.investee');
+        Route::post('/delete-invester' , [UserController::class,'delete_invester'])->name('admin.delete.invester');
+        Route::post('/get-user' , [UserController::class,'get_user_detail'])->name('admin.get.user.detail');
         Route::get('/logout' , [AdminController::class , 'logout'])->name('admin.logout');
         
         // Route::get('/home' , [AdminController::class , 'home'])->name('admin.dashboard');

@@ -8,6 +8,7 @@ use App\Http\Repository\Home;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -152,4 +153,159 @@ class UserController extends Controller
             return response()->json(['success' => false , 'msg'=> 'Something Went Wrong' , 'error' => $e->getMessage()]);
         }
     }
+
+    public function get_investee_page()
+    {
+        return view('admin.investee');
+    }
+
+    public function get_invester_page()
+    {
+        return view('admin.invester');
+    }
+
+
+    public function get_investee_list()
+    {
+        $investees = User::where("role", \AppConst::INVESTEE_ROLE)->get();
+        
+        return DataTables::of($investees)
+
+            ->addColumn('name' , function($investee){
+                return $investee->name;
+            })
+
+            ->addColumn('email' , function($investee){
+                return $investee->email;
+            })
+
+            ->addColumn('status' , function($investee){
+                return $investee->status == "approved" ? '<strong class="text-success investee-status">'.$investee->status.'</strong>' : '<strong class="text-danger investee-status">'.$investee->status.'</strong>';
+            })
+
+            ->addColumn('action' , function($investee){
+                return '<a href="javascript:void(0)"><i class="fas fa-trash-alt delete-investee text-danger" data-investee-id="'.$investee->id.'"></i></a><a href="javascript:void(0)"><a class="investee-plan mx-2" href="javascript:void(0)"> <i class="fas fa-edit edit-investee" data-investee-id="'.$investee->id.'"></i></a>';
+            })
+
+            ->rawColumns(['name','email','status','action'])
+            
+            ->make(true);
+    }
+
+    public function get_invester_list()
+    {
+        $investers = User::where("role", \AppConst::INVESTER_ROLE)->get();
+        
+        return DataTables::of($investers)
+
+            ->addColumn('name' , function($invester){
+                return $invester->name;
+            })
+
+            ->addColumn('email' , function($invester){
+                return $invester->email;
+            })
+
+            ->addColumn('status' , function($invester){
+                return $invester->status == "approved" ? '<strong class="text-success investee-status">'.$invester->status.'</strong>' : '<strong class="text-danger investee-status">'.$invester->status.'</strong>';
+            })
+
+            ->addColumn('action' , function($invester){
+                return '<a href="javascript:void(0)"><i class="fas fa-trash-alt delete-invester text-danger" data-invester-id="'.$invester->id.'"></i></a><a href="javascript:void(0)"><a class="investee-plan mx-2" href="javascript:void(0)"> <i class="fas fa-edit edit-invester" data-invester-id="'.$invester->id.'"></i></a>';
+            })
+
+            ->rawColumns(['name','email','status','action'])
+            
+            ->make(true);
+    }
+
+    public function update_investee(Request $request)
+    {
+        try{
+            $investeeId = $request->investeeId;
+            
+            $status = $request->status;
+            
+            User::where('id' , $investeeId)->update(['status' => $status]);
+            
+            return response()->json(['success' => true , 'msg' => 'Investee Updated Successfully']);
+
+        }catch(\Exception $e){
+
+            return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'error' => $e->getMessage() ]);
+
+        }
+
+    }
+
+    public function update_invester(Request $request)
+    {   
+        try{
+            $investerId = $request->investerId;
+            
+            $status = $request->status;
+            
+            User::where('id' , $investerId)->update(['status' => $status]);
+            
+            return response()->json(['success' => true , 'msg' => 'Investee Updated Successfully']);
+
+        }catch(\Exception $e){
+
+            return response()->json(['success' => false , 'msg' => 'Something Went Wrong' , 'error' => $e->getMessage() ]);
+
+        }
+    }
+
+    public function delete_investee(Request $request)
+    {
+        try{
+            $id = $request->investeeId;
+
+            User::where('id' , $id)->delete();
+
+            return response()->json(['success' => true , 'msg' => 'Investee deleted successfully']);
+
+        }catch(\Exception $e)
+        {
+
+            return response()->json(['success' => false , 'msg' => 'Something Went Wrong!' , 'error' => $e->getMessage()]);
+
+        }
+   
+    }
+
+    public function delete_invester(Request $request)
+    {
+        try{
+            $id = $request->investerId;
+
+            User::where('id' , $id)->delete();
+
+            return response()->json(['success' => true , 'msg' => 'Invester deleted successfully']);
+
+        }catch(\Exception $e)
+        {
+
+            return response()->json(['success' => false , 'msg' => 'Something Went Wrong!' , 'error' => $e->getMessage()]);
+
+        }
+    }
+
+    public function get_user_detail(Request $request)
+    {
+        try{
+            $userId = $request->id;
+
+            $userDetail = User::where('id' , $userId)->first();
+
+            return response()->json(['success' => true , 'msg' => "User Found" , "user" => $userDetail]);
+        }
+        catch(\Exception $e){
+            return response()->json(['success' => false , 'msg' => "Something Went Wrong" , "error" => $e->getMessage()]);
+        }
+    }
+
+
+
+
 }
