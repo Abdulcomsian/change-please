@@ -25,7 +25,8 @@ class BusinessModel extends Model
         'replaceable',
         'customer_story',
         'unique_feature',
-        'revenue_stream'
+        'revenue_stream',
+        'rating'
     ];
     
     public function Plan()

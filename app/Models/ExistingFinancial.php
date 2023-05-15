@@ -35,6 +35,7 @@ class ExistingFinancial extends Model
         'net_profit',
         'cach_balance',
         'funding_request',
+        'rating'
     ];
     
     public function Plan()

@@ -25,7 +25,8 @@ class Team extends Model
         'right_person',
         'motivation',
         'founder',
-        'responsible_idea'
+        'responsible_idea',
+        'rating'
     ];
 
     public function Plan()

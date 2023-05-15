@@ -25,7 +25,8 @@ class Traction extends Model
         'growth_rate',
         'growth_linear_consistent',
         'held_back',
-        'demonstration'
+        'demonstration',
+        'rating'
     ];
     
     public function Plan()

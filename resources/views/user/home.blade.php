@@ -1,4 +1,31 @@
 @extends('user.main')
+@section('style')
+<style>
+  img.card-img-top {
+      height: 350px;
+  }
+  .col-lg-4.plan{
+    height: 698px;
+    overflow-y: hidden;
+    position: relative;
+  }
+  .col-lg-4.plan .box {
+    height: 620px;
+ }
+
+ .statistic-box.card {
+    margin-top: 30px;
+    position: absolute;
+    width: 409px;
+    z-index: 1;
+    transition : bottom 2;
+}
+
+.col-lg-4.plan:hover .statistic-box.card{
+  bottom: 2px;
+}
+</style>
+@endsection
 @section('main-content')
 <div class="hero_section">
     <div class="content">

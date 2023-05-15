@@ -26,6 +26,7 @@ class Competitions extends Model
         'compare_price',
         'compare_service',
         'customer_satisfaction',
+        'rating'
     ];
 
     public function Plan()

@@ -25,7 +25,8 @@ class Funds extends Model
         'biggest_risks',
         'raising_capitals',
         'fundraising_efforts',
-        'personal_expenses'
+        'personal_expenses',
+        'rating'
     ];
     
     public function Plan()

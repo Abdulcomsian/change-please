@@ -25,7 +25,8 @@ class Financial extends Model
         'burn_rate',
         'time_period',
         'metrics_key',
-        'stock_options'
+        'stock_options',
+        'rating'
     ];
     
     public function Plan()

@@ -10,7 +10,7 @@ class Market extends Model
     use HasFactory;
     protected $table = "markets";
     protected $primaryKey = "id";
-    protected $fillable =["plan_id" , "market_opportunity" , "market_share" , "customer" , "time_taken" , "figures" , "pr_strategy" , "aspire", "least_like" ,"right_time" ,"strategy" ,"status"];
+    protected $fillable =["plan_id" , "market_opportunity" , "market_share" , "customer" , "time_taken" , "figures" , "pr_strategy" , "aspire", "least_like" ,"right_time" ,"strategy" ,"status",'rating'];
     
     public function Plan()
     {

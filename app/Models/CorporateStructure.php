@@ -25,7 +25,8 @@ class CorporateStructure extends Model
         'talent_skills',
         'selected_founder',
         'employee_selector',
-        'registered_agent'
+        'registered_agent',
+        'rating'
     ];
     
     public function Plan()

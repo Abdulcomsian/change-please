@@ -21,7 +21,8 @@ class IntellectualProperty extends Model
         'developed_intellectual_property',
         'person_left',
         'additional_partner',
-        'current_intellectual_assets'
+        'current_intellectual_assets',
+        'rating'
     ];
     
     public function Plan()
