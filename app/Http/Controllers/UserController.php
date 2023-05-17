@@ -71,6 +71,12 @@ class UserController extends Controller
     {
         return view('user.answer');
     }
+
+    public function get_project_details(Request $request)
+    {
+        $plan = $this->home->get_project_details($request->id);
+        return view('user.details')->with([ "plan" => $plan ]);
+    }
     public function analyst_delete_investee(Request $request)
     {
         try{

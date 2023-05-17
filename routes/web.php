@@ -106,6 +106,7 @@ Route::get('/general-information' , [UserController::class , 'get_general_inform
 Route::get('/services' , [UserController::class ,'get_service'])->name('user.service');
 Route::get('/offerings' , [UserController::class , 'get_offerings'])->name('user.offerings');
 Route::get('/filter' , [UserController::class ,'get_filter'])->name('user.filter');
+Route::get('/project-details/{id}' , [UserController::class , 'get_project_details']);
 Route::get('/invester-information' ,[UserController::class, 'get_invester'])->name('user.invester');
 Route::get('/plan' ,[UserController::class , 'get_plan_statistics'])->name('user.plan');
 Route::get('/investee-profile' , [UserController::class , 'get_investee_profile'])->name('user.investee_profile');

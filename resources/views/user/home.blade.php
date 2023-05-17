@@ -11,6 +11,7 @@
   }
   .col-lg-4.plan .box {
     height: 620px;
+    width: 408px;
  }
 
  .statistic-box.card {
@@ -18,12 +19,33 @@
     position: absolute;
     width: 409px;
     z-index: 1;
-    transition : bottom 2;
+    bottom : -100%;
+    transition: bottom 0.3s ease;
 }
 
 .col-lg-4.plan:hover .statistic-box.card{
   bottom: 2px;
 }
+
+
+.circular-progress-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  
+}
+p.rating-holder {
+    padding: 3px 11px;
+    width: 60px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+
 </style>
 @endsection
 @section('main-content')

@@ -27,7 +27,7 @@ class ProjectFilter extends Component
 
     public function render()
     {
-        $plans = !isset($this->planList) ? Plan::orderBy('id' , 'desc')->paginate(2) : $this->planList->paginate(2); 
+        $plans = !isset($this->planList) ? Plan::orderBy('id' , 'desc')->where('status' , 'accepted')->paginate(2) : $this->planList->paginate(2); 
         
         return view('livewire.project-filter' , ['plans' => $plans]);
     }
@@ -71,7 +71,9 @@ class ProjectFilter extends Component
 
                             $query->where('investment','<=' , $this->maximumRange);
 
-                          })->orderBy('id' , 'desc');
+                          })
+                          ->where('status' , 'accepted')
+                          ->orderBy('id' , 'desc');
 
     }
 
@@ -84,6 +86,7 @@ class ProjectFilter extends Component
                             $query->where('company_name' , 'like' , '%'.$this->search.'%')->orWhere('size' , 'like' , '%'.$this->search.'%');
 
                          })
+                         ->where('status' , 'accepted')
                          ->orderBy('id' , 'desc');
         
     } 
